@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec java -client \
+   -XX:+TieredCompilation \
+   -Xbootclasspath/a:target/es.jar \
+   es.main "$@"
