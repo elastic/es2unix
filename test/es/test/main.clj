@@ -4,12 +4,11 @@
   (:require [es.command.version :as version]))
 
 (def defaults
-  {:host "localhost"
-   :port 9200})
+  {:url "http://localhost:99"})
 
 (deftest dispatch
   (is (= :fail (main "foo" nil nil)))
-  (is (= (format "es %s\nelasticsearch not running at localhost:99\n"
-                 (version/version))
-         (main "version" [] {:host "localhost" :port 99}))))
-
+  (is (= (format
+          "es %s\nelasticsearch not running at http://localhost:99\n"
+          (version/version))
+         (main "version" [] defaults))))

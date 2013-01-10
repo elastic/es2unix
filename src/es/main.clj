@@ -5,8 +5,7 @@
             [es.command.health]))
 
 (def opts
-  [["-h" "--host" "ES instance hostname" :default "localhost"]
-   ["-p" "--port" "ES instance port" :parse-fn #(Integer. %) :default "9200"]
+  [["-u" "--url" "ES instance locator" :default "http://localhost:9200"]
    ["-v" "--[no-]verbose" :default true]])
 
 (defn find-command [ns var]

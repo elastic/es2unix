@@ -1,11 +1,11 @@
 (ns es.command.health
   (:require [es.http :as http]))
 
-(defn health [host port]
-  (http/get host port "/_cluster/health"))
+(defn health [url]
+  (http/get (str url "/_cluster/health")))
 
-(defn go [args {:keys [host port]}]
-  (let [res (health host port)
+(defn go [args {:keys [url]}]
+  (let [res (health url)
         vals (juxt
               :cluster_name
               :status

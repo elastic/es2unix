@@ -1,0 +1,12 @@
+{
+   "number_of_data_nodes" : 3,
+   "relocating_shards" : 0,
+   "status" : "green",
+   "active_shards" : 3,
+   "cluster_name" : "elasticsearch",
+   "active_primary_shards" : 3,
+   "timed_out" : false,
+   "initializing_shards" : 0,
+   "number_of_nodes" : 3,
+   "unassigned_shards" : 0
+}
