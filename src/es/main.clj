@@ -1,7 +1,8 @@
 (ns es.main
   (:gen-class)
   (:require [clojure.tools.cli :refer [cli]]
-            [es.command.version]))
+            [es.command.version]
+            [es.command.health]))
 
 (def opts
   [["-h" "--host" "ES instance hostname" :default "localhost"]
