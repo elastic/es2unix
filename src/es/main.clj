@@ -1,6 +1,7 @@
 (ns es.main
   (:gen-class)
-  (:require [clojure.tools.cli :refer [cli]]))
+  (:require [clojure.tools.cli :refer [cli]]
+            [es.command.version]))
 
 (def opts
   [["-h" "--host" "ES instance hostname" :default "localhost"]
@@ -10,7 +11,6 @@
 (defn find-command [ns var]
   (let [var (symbol (format "%s/%s" ns var))]
     (try
-      (require ns)
       (find-var var)
       (catch Exception _))))
 
