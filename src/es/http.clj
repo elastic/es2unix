@@ -12,5 +12,12 @@
                 #(http/get url))]
     (try
       (-> (getfn) :body (#(json/decode % true)))
-      (catch java.net.ConnectException e
-        nil))))
+      (catch org.apache.http.NoHttpResponseException _
+        {:http-error (format "no response from %s" url)})
+      (catch java.net.UnknownHostException _
+        {:http-error (format "unknown host %s" (.getHost uri))})
+      (catch java.net.ConnectException _
+        {:http-error (format "can't connect to %s" url)})
+      (catch clojure.lang.ExceptionInfo e
+        {:http-error (format "%s: %s"
+                             url (-> e .getData :object :status))}))))

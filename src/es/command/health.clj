@@ -16,4 +16,6 @@
               :relocating_shards
               :initializing_shards
               :unassigned_shards)]
-    (apply str (interpose " " (vals res)))))
+    (or
+     (:http-error res)
+     (apply str (interpose " " (vals res))))))
