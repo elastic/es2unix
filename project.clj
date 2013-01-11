@@ -11,4 +11,5 @@
                  [clj-http "0.6.3"]
                  [log4j/log4j "1.2.16"]]
   :main es.main
-  :uberjar-name "es.jar")
+  :uberjar-name "es.jar"
+  :executable-name "es")
