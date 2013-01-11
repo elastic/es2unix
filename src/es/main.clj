@@ -1,6 +1,7 @@
 (ns es.main
   (:gen-class)
   (:require [clojure.tools.cli :refer [cli]]
+            [es.format.table :refer [tabler]]
             [es.command.health]
             [es.command.master]
             [es.command.nodes]
@@ -9,6 +10,7 @@
 
 (def opts
   [["-u" "--url" "ES instance locator" :default "http://localhost:9200"]
+   ["-o" "--output" "Output format [raw, csv, org]" :default :raw]
    ["-v" "--[no-]verbose" :default true]])
 
 (defn find-command [ns var]
@@ -44,4 +46,4 @@
         :fail (if cmd
                 (error "no command %s" cmd)
                 (help banner))
-        (println (.trim res))))))
+        (println (tabler opts res))))))
