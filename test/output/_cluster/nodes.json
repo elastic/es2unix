@@ -1,27 +1,38 @@
 {
+   "cluster_name" : "kluster",
    "nodes" : {
-      "RJpJKcAzSrO1kNoHlDvZBg" : {
-         "transport_address" : "inet[/192.168.20.115:9301]",
-         "http_address" : "inet[/192.168.20.115:9201]",
-         "name" : "Missing Link",
+      "j27iagsmQQaeIpl6yU6mCg" : {
          "version" : "0.21.0.Beta1-SNAPSHOT",
+         "attributes" : {
+            "client" : "true",
+            "data" : "false"
+         },
+         "http_address" : "inet[localhost/127.0.0.1:9203]",
+         "transport_address" : "inet[/127.0.0.1:9303]",
+         "name" : "Georgianna Castleberry",
          "hostname" : "beta"
       },
-      "BbGA6DgrQ4ypROuLuxjSBA" : {
-         "transport_address" : "inet[/192.168.20.115:9300]",
-         "http_address" : "inet[/192.168.20.115:9200]",
-         "name" : "Klaw",
+      "Q4qgMlrETs67mUL-iGHC4A" : {
          "version" : "0.21.0.Beta1-SNAPSHOT",
+         "http_address" : "inet[localhost/127.0.0.1:9202]",
+         "transport_address" : "inet[/127.0.0.1:9302]",
+         "name" : "Luichow, Chan",
          "hostname" : "beta"
       },
-      "zPRCnao_R_CFMo4m00F6iQ" : {
-         "transport_address" : "inet[/192.168.20.115:9302]",
-         "http_address" : "inet[/192.168.20.115:9202]",
-         "name" : "Living Pharaoh",
+      "J-erllamTOiW5WoGVUd04A" : {
          "version" : "0.21.0.Beta1-SNAPSHOT",
+         "http_address" : "inet[localhost/127.0.0.1:9200]",
+         "transport_address" : "inet[localhost/127.0.0.1:9301]",
+         "name" : "Slade, Frederick",
+         "hostname" : "beta"
+      },
+      "Uv1Iy8FvR0y6_RzPXKBolg" : {
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "http_address" : "inet[localhost/127.0.0.1:9201]",
+         "transport_address" : "inet[/127.0.0.1:9300]",
+         "name" : "Cannonball I",
          "hostname" : "beta"
       }
    },
-   "cluster_name" : "elasticsearch",
    "ok" : true
 }

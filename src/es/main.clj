@@ -3,6 +3,7 @@
   (:require [clojure.tools.cli :refer [cli]]
             [es.command.health]
             [es.command.master]
+            [es.command.nodes]
             [es.command.version]
             ))
 

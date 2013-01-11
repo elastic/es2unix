@@ -1,0 +1,27 @@
+{
+   "ok" : true,
+   "nodes" : {
+      "Q4qgMlrETs67mUL-iGHC4A" : {
+         "http_address" : "inet[localhost/127.0.0.1:9202]",
+         "name" : "Luichow, Chan",
+         "hostname" : "beta",
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "transport_address" : "inet[/127.0.0.1:9302]"
+      },
+      "J-erllamTOiW5WoGVUd04A" : {
+         "http_address" : "inet[localhost/127.0.0.1:9200]",
+         "name" : "Slade, Frederick",
+         "hostname" : "beta",
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "transport_address" : "inet[localhost/127.0.0.1:9301]"
+      },
+      "Uv1Iy8FvR0y6_RzPXKBolg" : {
+         "http_address" : "inet[localhost/127.0.0.1:9201]",
+         "name" : "Cannonball I",
+         "hostname" : "beta",
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "transport_address" : "inet[/127.0.0.1:9300]"
+      }
+   },
+   "cluster_name" : "kluster"
+}

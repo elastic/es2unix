@@ -9,6 +9,9 @@
                          "filter_routing_table=1&"
                          "filter_indices=1"))))
 
+(defn master-id [url]
+  (:master_node (master url)))
+
 (defn go [args {:keys [url]}]
   (let [res (master url)]
     (or
