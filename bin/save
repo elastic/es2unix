@@ -1,0 +1,6 @@
+#!/bin/sh
+
+dir=test/output/`dirname "$1"`
+echo "\"$dir\""
+[ -d "$dir" ] || mkdir -p "$dir"
+curl -s localhost:9200/$1 | json_xs | tee "test/output/$1.json"
