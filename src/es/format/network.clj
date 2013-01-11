@@ -2,7 +2,7 @@
 
 (defn parse-addr [addr]
   (let [[_ proto ip port]
-        (re-find #"(.*?)\[/([0-9a-f.:]+):([0-9]+)\]" addr)]
+        (re-find #"(.*?)\[[^/]*/([0-9a-f.:]+):([0-9]+)\]" addr)]
     {:proto proto
      :ip ip
      :port port}))
