@@ -5,7 +5,7 @@
             [es.local :as local])
   (:import (java.net URI)))
 
-(defn get [url]
+(defn get* [url]
   (let [uri (URI. url)
         [path query] [(.getPath uri) (.getQuery uri)]
         getfn (if (= "local" (.getScheme uri))
@@ -24,3 +24,5 @@
       (catch clojure.lang.ExceptionInfo e
         {:http-error (format "%s: %s"
                              url (-> e .getData :object :status))}))))
+
+(def get (memoize get*))
