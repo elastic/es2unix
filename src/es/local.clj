@@ -6,9 +6,14 @@
   (str "output" path ".json"))
 
 (defn get [uri]
-  (if-let [json (-> uri
-                    localize-path
-                    io/resource slurp)]
+  (if-let [f (-> uri
+                 localize-path
+                 io/resource)]
     {:status 200
      :headers {"content-type" "application/json; charset=UTF-8"}
-     :body json}))
+     :body (-> f slurp)}
+    (throw
+     (clojure.lang.ExceptionInfo.
+      (format "not found: %s" uri)
+      {:object
+       {:status 404}}))))

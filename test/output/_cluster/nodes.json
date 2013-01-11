@@ -1,0 +1,27 @@
+{
+   "nodes" : {
+      "RJpJKcAzSrO1kNoHlDvZBg" : {
+         "transport_address" : "inet[/192.168.20.115:9301]",
+         "http_address" : "inet[/192.168.20.115:9201]",
+         "name" : "Missing Link",
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "hostname" : "beta"
+      },
+      "BbGA6DgrQ4ypROuLuxjSBA" : {
+         "transport_address" : "inet[/192.168.20.115:9300]",
+         "http_address" : "inet[/192.168.20.115:9200]",
+         "name" : "Klaw",
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "hostname" : "beta"
+      },
+      "zPRCnao_R_CFMo4m00F6iQ" : {
+         "transport_address" : "inet[/192.168.20.115:9302]",
+         "http_address" : "inet[/192.168.20.115:9202]",
+         "name" : "Living Pharaoh",
+         "version" : "0.21.0.Beta1-SNAPSHOT",
+         "hostname" : "beta"
+      }
+   },
+   "cluster_name" : "elasticsearch",
+   "ok" : true
+}

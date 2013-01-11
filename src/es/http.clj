@@ -7,8 +7,11 @@
 
 (defn get [url]
   (let [uri (URI. url)
+        [path query] [(.getPath uri) (.getQuery uri)]
         getfn (if (= "local" (.getScheme uri))
-                #(local/get (.getPath uri))
+                #(local/get (str path
+                                 (if query
+                                   (str "?" query))))
                 #(http/get url))]
     (try
       (-> (getfn) :body (#(json/decode % true)))

@@ -1,8 +1,10 @@
 (ns es.main
   (:gen-class)
   (:require [clojure.tools.cli :refer [cli]]
+            [es.command.health]
+            [es.command.master]
             [es.command.version]
-            [es.command.health]))
+            ))
 
 (def opts
   [["-u" "--url" "ES instance locator" :default "http://localhost:9200"]

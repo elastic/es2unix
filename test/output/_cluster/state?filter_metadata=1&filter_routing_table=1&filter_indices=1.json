@@ -1,0 +1,22 @@
+{
+   "nodes" : {
+      "BbGA6DgrQ4ypROuLuxjSBA" : {
+         "name" : "Klaw",
+         "attributes" : {},
+         "transport_address" : "inet[/192.168.20.115:9300]"
+      },
+      "zPRCnao_R_CFMo4m00F6iQ" : {
+         "name" : "Living Pharaoh",
+         "attributes" : {},
+         "transport_address" : "inet[/192.168.20.115:9302]"
+      },
+      "RJpJKcAzSrO1kNoHlDvZBg" : {
+         "name" : "Missing Link",
+         "attributes" : {},
+         "transport_address" : "inet[/192.168.20.115:9301]"
+      }
+   },
+   "master_node" : "BbGA6DgrQ4ypROuLuxjSBA",
+   "cluster_name" : "elasticsearch",
+   "blocks" : {}
+}
