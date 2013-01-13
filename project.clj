@@ -9,8 +9,7 @@
                  [org.clojure/tools.cli "0.2.2"]
                  [cheshire "5.0.1"]
                  [clj-http "0.6.3"]
-                 [log4j/log4j "1.2.16"]
-                 [doric "0.7.0"]]
+                 [log4j/log4j "1.2.16"]]
   :main es.main
   :uberjar-name "es.jar"
   :executable-name "es")
