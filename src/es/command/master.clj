@@ -18,5 +18,4 @@
      (:http-error res)
      (let [id (:master_node res)
            m (get (:nodes res) (keyword id))]
-       (format "%s %s %s" id (ip (:transport_address m))
-          (:name m))))))
+       [[id (ip (:transport_address m)) (:name m)]]))))

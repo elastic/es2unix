@@ -18,4 +18,4 @@
               :unassigned_shards)]
     (or
      (:http-error res)
-     (apply str (interpose " " (vals res))))))
+     [(vals res)])))

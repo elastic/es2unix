@@ -3,5 +3,5 @@
   (:require [es.command.health :as health]))
 
 (deftest health
-  (is (= "elasticsearch green 3 3 3 3 0 0 0"
+  (is (= [["elasticsearch" "green" 3 3 3 3 0 0 0]]
          (health/go [] {:url "local:"}))))

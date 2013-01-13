@@ -12,6 +12,5 @@
   (let [ver (version)
         esver (or (esver url)
                   (format "not running at %s" url))]
-    (with-out-str
-      (println "es" ver)
-      (println "elasticsearch" esver))))
+    [["es" ver]
+     ["elasticsearch" esver]]))

@@ -46,4 +46,4 @@
         :fail (if cmd
                 (error "no command %s" cmd)
                 (help banner))
-        (println (tabler opts res))))))
+        (tabler opts res)))))

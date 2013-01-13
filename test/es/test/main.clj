@@ -8,7 +8,6 @@
 
 (deftest dispatch
   (is (= :fail (main "foo" nil nil)))
-  (is (= (format
-          "es %s\nelasticsearch not running at http://localhost:99\n"
-          (version/version))
+  (is (= [["es" "0.9.0"]
+          ["elasticsearch" "not running at http://localhost:99"]]
          (main "version" [] defaults))))
