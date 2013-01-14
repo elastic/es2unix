@@ -1,38 +1,48 @@
 {
-   "cluster_name" : "kluster",
+   "ok" : true,
    "nodes" : {
+      "Uv1Iy8FvR0y6_RzPXKBolg" : {
+         "hostname" : "beta",
+         "name" : "Cannonball I",
+         "transport_address" : "inet[/127.0.0.1:9300]",
+         "http_address" : "inet[localhost/127.0.0.1:9201]",
+         "version" : "0.21.0.Beta1-SNAPSHOT"
+      },
       "j27iagsmQQaeIpl6yU6mCg" : {
-         "version" : "0.21.0.Beta1-SNAPSHOT",
-         "attributes" : {
-            "client" : "true",
-            "data" : "false"
-         },
-         "http_address" : "inet[localhost/127.0.0.1:9203]",
-         "transport_address" : "inet[/127.0.0.1:9303]",
+         "hostname" : "beta",
          "name" : "Georgianna Castleberry",
-         "hostname" : "beta"
+         "attributes" : {
+            "data" : "false",
+            "client" : "true"
+         },
+         "transport_address" : "inet[/127.0.0.1:9303]",
+         "http_address" : "inet[localhost/127.0.0.1:9203]",
+         "version" : "0.21.0.Beta1-SNAPSHOT"
       },
       "Q4qgMlrETs67mUL-iGHC4A" : {
-         "version" : "0.21.0.Beta1-SNAPSHOT",
-         "http_address" : "inet[localhost/127.0.0.1:9202]",
-         "transport_address" : "inet[/127.0.0.1:9302]",
+         "hostname" : "beta",
          "name" : "Luichow, Chan",
-         "hostname" : "beta"
+         "transport_address" : "inet[/127.0.0.1:9302]",
+         "http_address" : "inet[localhost/127.0.0.1:9202]",
+         "version" : "0.21.0.Beta1-SNAPSHOT"
+      },
+      "AvYWeugwQjqs0cB1vr3D-w" : {
+         "hostname" : "beta",
+         "name" : "Eric the Red",
+         "attributes" : {
+            "master" : "false"
+         },
+         "transport_address" : "inet[/127.0.0.1:9304]",
+         "http_address" : "inet[localhost/127.0.0.1:9204]",
+         "version" : "0.21.0.Beta1-SNAPSHOT"
       },
       "J-erllamTOiW5WoGVUd04A" : {
-         "version" : "0.21.0.Beta1-SNAPSHOT",
-         "http_address" : "inet[localhost/127.0.0.1:9200]",
-         "transport_address" : "inet[localhost/127.0.0.1:9301]",
+         "hostname" : "beta",
          "name" : "Slade, Frederick",
-         "hostname" : "beta"
-      },
-      "Uv1Iy8FvR0y6_RzPXKBolg" : {
-         "version" : "0.21.0.Beta1-SNAPSHOT",
-         "http_address" : "inet[localhost/127.0.0.1:9201]",
-         "transport_address" : "inet[/127.0.0.1:9300]",
-         "name" : "Cannonball I",
-         "hostname" : "beta"
+         "transport_address" : "inet[localhost/127.0.0.1:9301]",
+         "http_address" : "inet[localhost/127.0.0.1:9200]",
+         "version" : "0.21.0.Beta1-SNAPSHOT"
       }
    },
-   "ok" : true
+   "cluster_name" : "kluster"
 }
