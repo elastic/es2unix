@@ -5,6 +5,9 @@
             [es.local :as local])
   (:import (java.net URI)))
 
+(defn local? [url]
+  (and (string? url) (.startsWith url "local:")))
+
 (defn get* [url]
   (let [uri (URI. url)
         [path query] [(.getPath uri) (.getQuery uri)]
@@ -25,4 +28,21 @@
         {:http-error (format "%s: %s"
                              url (-> e .getData :object :status))}))))
 
-(def get (memoize get*))
+(defn memoize-cond
+  "Only return memoized value if (pred args) is true."
+  [f pred]
+  (let [mem (atom {})]
+    (fn [& args]
+      (if (pred args)
+        (if-let [e (find @mem args)]
+          (val e)
+          (let [ret (apply f args)]
+            (swap! mem assoc args ret)
+            ret))
+        (apply f args)))))
+
+(def get (memoize-cond
+          get*
+          (fn [args]
+            (let [[arg] args]
+              (if (not (local? arg)) true)))))
