@@ -43,3 +43,9 @@
 
 (defn master-id [url]
   (:master_node (master url)))
+
+(defn node-name [nodes id]
+  (let [id (keyword id)]
+    (if-let [node (-> nodes :nodes id)]
+      (:name node)
+      "")))

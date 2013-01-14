@@ -1,0 +1,750 @@
+{
+   "indices" : {
+      "wiki" : {
+         "shards" : {
+            "3" : [
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 50,
+                     "total_time" : "50ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561670
+                  },
+                  "routing" : {
+                     "shard" : 3,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "J-erllamTOiW5WoGVUd04A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "409.1mb",
+                     "size_in_bytes" : 429017254
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28761,
+                     "num_docs" : 28761
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 62,
+                     "total_time" : "62ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 1
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561670
+                  },
+                  "routing" : {
+                     "shard" : 3,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Uv1Iy8FvR0y6_RzPXKBolg",
+                     "primary" : true,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "409.1mb",
+                     "size_in_bytes" : 429013649
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28761,
+                     "num_docs" : 28761
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 75,
+                     "total_time" : "75ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561670
+                  },
+                  "routing" : {
+                     "shard" : 3,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Q4qgMlrETs67mUL-iGHC4A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "409.1mb",
+                     "size_in_bytes" : 429019084
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28761,
+                     "num_docs" : 28761
+                  }
+               }
+            ],
+            "2" : [
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 53,
+                     "total_time" : "53ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561494
+                  },
+                  "routing" : {
+                     "shard" : 2,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "J-erllamTOiW5WoGVUd04A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "406.9mb",
+                     "size_in_bytes" : 426738791
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28718,
+                     "num_docs" : 28718
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 101,
+                     "total_time" : "101ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 1
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561494
+                  },
+                  "routing" : {
+                     "shard" : 2,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Uv1Iy8FvR0y6_RzPXKBolg",
+                     "primary" : true,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "406.9mb",
+                     "size_in_bytes" : 426734771
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28718,
+                     "num_docs" : 28718
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 12,
+                     "total_time" : "12ms",
+                     "total" : 4
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561494
+                  },
+                  "routing" : {
+                     "shard" : 2,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "AvYWeugwQjqs0cB1vr3D-w",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "406.9mb",
+                     "size_in_bytes" : 426734751
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28718,
+                     "num_docs" : 28718
+                  }
+               }
+            ],
+            "4" : [
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 58,
+                     "total_time" : "58ms",
+                     "total" : 19
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561586
+                  },
+                  "routing" : {
+                     "shard" : 4,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "J-erllamTOiW5WoGVUd04A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "410.6mb",
+                     "size_in_bytes" : 430611290
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28819,
+                     "num_docs" : 28819
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 109,
+                     "total_time" : "109ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 1
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561586
+                  },
+                  "routing" : {
+                     "shard" : 4,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Uv1Iy8FvR0y6_RzPXKBolg",
+                     "primary" : true,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "410.6mb",
+                     "size_in_bytes" : 430608757
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28819,
+                     "num_docs" : 28819
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 63,
+                     "total_time" : "63ms",
+                     "total" : 19
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561586
+                  },
+                  "routing" : {
+                     "shard" : 4,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Q4qgMlrETs67mUL-iGHC4A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "410.6mb",
+                     "size_in_bytes" : 430612693
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28819,
+                     "num_docs" : 28819
+                  }
+               }
+            ],
+            "0" : [
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 146,
+                     "total_time" : "146ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 1
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561279
+                  },
+                  "routing" : {
+                     "shard" : 0,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Uv1Iy8FvR0y6_RzPXKBolg",
+                     "primary" : true,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "404.8mb",
+                     "size_in_bytes" : 424543981
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28826,
+                     "num_docs" : 28826
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 72,
+                     "total_time" : "72ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561279
+                  },
+                  "routing" : {
+                     "shard" : 0,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Q4qgMlrETs67mUL-iGHC4A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "404.8mb",
+                     "size_in_bytes" : 424547838
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28826,
+                     "num_docs" : 28826
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 14,
+                     "total_time" : "14ms",
+                     "total" : 4
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561279
+                  },
+                  "routing" : {
+                     "shard" : 0,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "AvYWeugwQjqs0cB1vr3D-w",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "404.8mb",
+                     "size_in_bytes" : 424543961
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28826,
+                     "num_docs" : 28826
+                  }
+               }
+            ],
+            "1" : [
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 51,
+                     "total_time" : "51ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561393
+                  },
+                  "routing" : {
+                     "shard" : 1,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "J-erllamTOiW5WoGVUd04A",
+                     "primary" : true,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "404.2mb",
+                     "size_in_bytes" : 423851451
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28576,
+                     "num_docs" : 28576
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 14,
+                     "total_time" : "14ms",
+                     "total" : 4
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561393
+                  },
+                  "routing" : {
+                     "shard" : 1,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "AvYWeugwQjqs0cB1vr3D-w",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "404.2mb",
+                     "size_in_bytes" : 423845459
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28576,
+                     "num_docs" : 28576
+                  }
+               },
+               {
+                  "merges" : {
+                     "current_size" : "0b",
+                     "current_docs" : 0,
+                     "total_size" : "0b",
+                     "current_size_in_bytes" : 0,
+                     "current" : 0,
+                     "total_time" : "0s",
+                     "total_time_in_millis" : 0,
+                     "total_docs" : 0,
+                     "total" : 0,
+                     "total_size_in_bytes" : 0
+                  },
+                  "flush" : {
+                     "total_time_in_millis" : 55,
+                     "total_time" : "55ms",
+                     "total" : 20
+                  },
+                  "refresh" : {
+                     "total_time_in_millis" : 0,
+                     "total_time" : "0s",
+                     "total" : 0
+                  },
+                  "translog" : {
+                     "operations" : 0,
+                     "id" : 1357760561393
+                  },
+                  "routing" : {
+                     "shard" : 1,
+                     "state" : "STARTED",
+                     "relocating_node" : null,
+                     "node" : "Q4qgMlrETs67mUL-iGHC4A",
+                     "primary" : false,
+                     "index" : "wiki"
+                  },
+                  "state" : "STARTED",
+                  "index" : {
+                     "size" : "404.2mb",
+                     "size_in_bytes" : 423848976
+                  },
+                  "docs" : {
+                     "deleted_docs" : 0,
+                     "max_doc" : 28576,
+                     "num_docs" : 28576
+                  }
+               }
+            ]
+         },
+         "merges" : {
+            "current_size" : "0b",
+            "current_docs" : 0,
+            "total_size" : "0b",
+            "current_size_in_bytes" : 0,
+            "current" : 0,
+            "total_time" : "0s",
+            "total_time_in_millis" : 0,
+            "total_docs" : 0,
+            "total" : 0,
+            "total_size_in_bytes" : 0
+         },
+         "flush" : {
+            "total_time_in_millis" : 935,
+            "total_time" : "935ms",
+            "total" : 250
+         },
+         "refresh" : {
+            "total_time_in_millis" : 0,
+            "total_time" : "0s",
+            "total" : 4
+         },
+         "docs" : {
+            "deleted_docs" : 0,
+            "max_doc" : 143700,
+            "num_docs" : 143700
+         },
+         "index" : {
+            "size" : "5.9gb",
+            "size_in_bytes" : 6404272706,
+            "primary_size_in_bytes" : 2134752609,
+            "primary_size" : "1.9gb"
+         },
+         "translog" : {
+            "operations" : 0
+         }
+      }
+   },
+   "ok" : true,
+   "_shards" : {
+      "failed" : 0,
+      "successful" : 15,
+      "total" : 15
+   }
+}
