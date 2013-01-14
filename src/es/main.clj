@@ -40,7 +40,7 @@
 
 (defn -main [& args]
   (let [[opts args banner] (apply cli args opts)]
-    (let [[cmd args] args
+    (let [[cmd & args] args
           res (main cmd args opts)]
       (condp = res
         :fail (if cmd
