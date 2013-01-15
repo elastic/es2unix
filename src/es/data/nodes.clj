@@ -9,8 +9,9 @@
    :master true})
 
 (defn nodes [url]
-  (if-let [st (cluster/state url)]
-    (-> st :nodes)))
+  (-> (str url "/_nodes")
+      http/get
+      :nodes))
 
 (defn master [url]
   (http/get (format "%s%s" url
