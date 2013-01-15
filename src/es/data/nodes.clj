@@ -14,11 +14,11 @@
       :nodes))
 
 (defn master [url]
-  (http/get (format "%s%s" url
-                    (str "/_cluster/state?"
-                         "filter_metadata=1&"
-                         "filter_routing_table=1&"
-                         "filter_indices=1"))))
+  (http/get
+   (str url "/_cluster/state?"
+        "filter_metadata=1&"
+        "filter_routing_table=1&"
+        "filter_indices=1")))
 
 (defn true? [attr]
   (= attr "true"))
