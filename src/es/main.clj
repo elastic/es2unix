@@ -71,7 +71,7 @@
     (let [[cmd & args] args
           res (try+
                 (main cmd args opts)
-                (catch [:type :es.http/error] {:keys [msg] :as foo}
+                (catch [:type :es.http/error] {:keys [msg]}
                   (error msg))
                 (catch Object _
                   (error "unexpected: %s" &throw-context)))]
