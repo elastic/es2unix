@@ -6,12 +6,21 @@ JSON is wonderful for services, but not always for humans.  The
 tabular format is compact.  es2unix strives to keep spaces significant
 so all output works with existing line-oriented *NIX tools.
 
+
 # Install
 
         curl -s download.elasticsearch.org/es2unix/es >~/bin/es
         chmod +x ~/bin/es
 
 # Usage
+
+The `es` command takes subcommands and a few options.  It assumes it's
+talking to ES at its default HTTP port using `http://localhost:9200`
+but accepts `-u` to change that.  It must be a fully qualifed URL with
+scheme, host, & port.
+
+You can also supply `-v`, for most commands, to print a column header.
+
 
 ## Version
 
@@ -42,21 +51,22 @@ so all output works with existing line-oriented *NIX tools.
 
 ## Shards
 
-        % es shards
-        wiki   1 r STARTED 404.2mb 423845459 28576 127.0.0.1 Cannonball I    
-        wiki   0 p STARTED 404.8mb 424543961 28826 127.0.0.1 Cannonball I    
-        wiki   2 p STARTED 406.9mb 426734771 28718 127.0.0.1 Cannonball I    
-        _river 0 p STARTED 79b            79     0 127.0.0.1 Cannonball I    
-        wiki   3 p STARTED 409.1mb 429013649 28761 127.0.0.1 Cannonball I    
-        wiki   4 p STARTED 410.6mb 430608757 28819 127.0.0.1 Cannonball I    
-        wiki   0 r STARTED 404.8mb 424543961 28826 127.0.0.1 Slade, Frederick
-        wiki   2 r STARTED 406.9mb 426738791 28718 127.0.0.1 Slade, Frederick
-        wiki   3 r STARTED 409.1mb 429017254 28761 127.0.0.1 Slade, Frederick
-        _river 0 r STARTED 79b            79     0 127.0.0.1 Slade, Frederick
-        wiki   4 r STARTED 410.6mb 430611290 28819 127.0.0.1 Slade, Frederick
-        wiki   0 r STARTED 404.8mb 424543961 28826 127.0.0.1 Living Tribunal 
-        wiki   1 p STARTED 404.2mb 423851451 28576 127.0.0.1 Slade, Frederick
-        wiki   1 r STARTED 404.2mb 423845459 28576 127.0.0.1 Living Tribunal 
-        wiki   2 r STARTED 406.9mb 426734751 28718 127.0.0.1 Living Tribunal 
-        wiki   3 r STARTED 409.1mb 429013629 28761 127.0.0.1 Living Tribunal 
-        wiki   4 r STARTED 410.6mb 430608737 28819 127.0.0.1 Living Tribunal 
+        % es shards -v
+        index  shard pri/rep state   size    size-bytes  docs ip        node            
+        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Cannonball I    
+        wiki       0 p       STARTED 404.8mb  424543961 28826 127.0.0.1 Cannonball I    
+        wiki       2 p       STARTED 406.9mb  426734771 28718 127.0.0.1 Cannonball I    
+        _river     0 p       STARTED 79b             79     0 127.0.0.1 Cannonball I    
+        wiki       3 p       STARTED 409.1mb  429013649 28761 127.0.0.1 Cannonball I    
+        wiki       4 p       STARTED 410.6mb  430608757 28819 127.0.0.1 Cannonball I    
+        wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Slade, Frederick
+        wiki       2 r       STARTED 406.9mb  426738791 28718 127.0.0.1 Slade, Frederick
+        wiki       3 r       STARTED 409.1mb  429017254 28761 127.0.0.1 Slade, Frederick
+        _river     0 r       STARTED 79b             79     0 127.0.0.1 Slade, Frederick
+        wiki       4 r       STARTED 410.6mb  430611290 28819 127.0.0.1 Slade, Frederick
+        wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Living Tribunal 
+        wiki       1 p       STARTED 404.2mb  423851451 28576 127.0.0.1 Slade, Frederick
+        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Living Tribunal 
+        wiki       2 r       STARTED 406.9mb  426734751 28718 127.0.0.1 Living Tribunal 
+        wiki       3 r       STARTED 409.1mb  429013629 28761 127.0.0.1 Living Tribunal 
+        wiki       4 r       STARTED 410.6mb  430608737 28819 127.0.0.1 Living Tribunal 
