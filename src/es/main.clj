@@ -53,9 +53,9 @@
   (println)
   (help-commands))
 
-(defn die [fmt & args]
+(defn die [banner fmt & args]
   (apply error fmt args)
-  (help)
+  (help banner)
   (System/exit 99))
 
 (defn main [cmd args opts]
@@ -77,6 +77,5 @@
                   (error "unexpected: %s" &throw-context)))]
       (condp = res
         :fail (if cmd
-                (die "no command %s" cmd)
-                (help banner))
+                (die banner "no command %s" cmd))
         (tabler opts res)))))
