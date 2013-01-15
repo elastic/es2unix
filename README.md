@@ -9,6 +9,10 @@ so all output works with existing line-oriented *NIX tools.
 
 # Install
 
+es2unix's only dependency is Java (Oracle or OpenJDK).  Version 7
+should be preferred, but there is no functional difference with 6.
+Earlier versions aren't supported.
+
         curl -s download.elasticsearch.org/es2unix/es >~/bin/es
         chmod +x ~/bin/es
 
@@ -70,3 +74,13 @@ You can also supply `-v`, for most commands, to print a column header.
         wiki       2 r       STARTED 406.9mb  426734751 28718 127.0.0.1 Living Tribunal 
         wiki       3 r       STARTED 409.1mb  429013629 28761 127.0.0.1 Living Tribunal 
         wiki       4 r       STARTED 410.6mb  430608737 28819 127.0.0.1 Living Tribunal 
+
+# Contributing
+
+es2unix is written in Clojure.  You'll need leiningen 2.0+ to build.
+
+        % make package
+
+# License
+
+[Apache 2](http://www.apache.org/licenses/LICENSE-2.0.html)
