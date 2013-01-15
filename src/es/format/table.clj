@@ -2,21 +2,17 @@
 
 (defn type-of [cell]
   (condp #(= (type %2) %1) cell
-    String :s
     Integer :d
     Long :d
     clojure.lang.BigInt :d
-    (throw
-     (Exception.
-      (format "what type is this? %s"
-              cell)))))
+    :s))
 
 (defn sizes [row]
   (apply merge
          (map-indexed (fn [i cell]
                         (sorted-map
                          i {:type (type-of cell)
-                            :size (count (str cell))}))
+                            :size (count (str (or cell " ")))}))
                       row)))
 
 (defn fmtmeta [data]
