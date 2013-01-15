@@ -2,12 +2,12 @@
 
 (defn type-of [cell]
   (condp #(= (type %2) %1) cell
-    Integer :d
-    Long :d
-    clojure.lang.BigInt :d
-    :s))
+    Integer :num
+    Long :num
+    clojure.lang.BigInt :num
+    :str))
 
-(defn sizes [row]
+(defn widths [row]
   (apply merge
          (map-indexed (fn [i cell]
                         (sorted-map
@@ -19,15 +19,18 @@
   (apply
    merge-with
    (fn [a b]
-     (if (>= (:size a) (:size b)) a b))
-   (map sizes data)))
+     {:size (if (>= (:size a) (:size b))
+              (:size a)
+              (:size b))
+      :type (:type b)})
+   (map widths data)))
 
 (defn fmt [sep data]
   (let [f (fn [xs [_ x]]
-            (let [neg (if (= :s (:type x))
+            (let [neg (if (= :str (:type x))
                         "-"
                         "")]
-              (conj xs (str "%" neg (:size x) (name (:type x))))))]
+              (conj xs (str "%" neg (:size x) "s"))))]
     (interpose sep (reduce f [] (fmtmeta data)))))
 
 (defn strings [sep data]
