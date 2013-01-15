@@ -10,6 +10,7 @@
                  [cheshire "5.0.1"]
                  [clj-http "0.6.3"]
                  [log4j/log4j "1.2.16"]]
+  :plugins [[lein-bin "0.2.2"]]
   :main es.main
   :uberjar-name "es.jar"
   :executable-name "es")
