@@ -3,12 +3,7 @@
   (:require [clojure.tools.cli :refer [cli]]
             [bultitude.core :refer [namespaces-on-classpath]]
             [es.format.table :refer [tabler]]
-            ;; Requiring these here so they get compiled early:
-            [es.command.health]
-            [es.command.master]
-            [es.command.nodes]
-            [es.command.shards]
-            [es.command.version]
+            [es.command :as comm]
             [slingshot.slingshot :refer [try+]]
             ))
 
@@ -23,21 +18,11 @@
       (find-var var)
       (catch Exception _))))
 
-(defn available-commands []
-  (let [pref "es.command."]
-    ;; :prefix doesn't currently work with -Xbootclasspath ...at least
-    ;; I think that's what's wrong.  Will filter manually for now.
-    (->> (namespaces-on-classpath)
-         (map str)
-         (filter #(.startsWith % pref))
-         (map #(.replace % pref ""))
-         sort)))
-
 (defn help-commands []
   (println "Available commands:")
   (println)
   (print "  ")
-  (println (->> (available-commands)
+  (println (->> comm/available
                 (interpose "\n  " )
                 (apply str))))
 
