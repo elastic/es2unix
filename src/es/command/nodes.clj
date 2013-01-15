@@ -3,9 +3,9 @@
             [es.format.network :refer [parse-addr]]))
 
 (defn go [args {:keys [url]}]
-  (let [res (nodes/nodes url)
+  (let [nodes (nodes/nodes url)
         mast (nodes/master-id url)]
-    (for [[id node] (:nodes res)]
+    (for [[id node] nodes]
       (let [httpaddr (-> node :http_address parse-addr)
             tranaddr (-> node :transport_address parse-addr)
             I-am-master? (= (name id) mast)

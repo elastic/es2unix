@@ -1,6 +1,7 @@
 (ns es.data.nodes
-  (:refer-clojure :exclude [false? true?])
-  (:require [es.http :as http]))
+  (:refer-clojure :exclude [false? true? name])
+  (:require [es.http :as http]
+            [es.data.cluster :as cluster]))
 
 (def defaults
   {:client false
@@ -8,7 +9,8 @@
    :master true})
 
 (defn nodes [url]
-  (http/get (str url "/_cluster/nodes")))
+  (if-let [st (cluster/state url)]
+    (-> st :nodes)))
 
 (defn master [url]
   (http/get (format "%s%s" url
@@ -44,8 +46,7 @@
 (defn master-id [url]
   (:master_node (master url)))
 
-(defn node-name [nodes id]
-  (let [id (keyword id)]
-    (if-let [node (-> nodes :nodes id)]
-      (:name node)
-      "")))
+(defn node [url id]
+  (let [nodes (nodes url)
+        id (keyword id)]
+    (nodes id)))
