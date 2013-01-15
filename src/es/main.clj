@@ -14,7 +14,7 @@
 
 (def opts
   [["-u" "--url" "ES instance locator" :default "http://localhost:9200"]
-   ["-o" "--output" "Output format [raw, csv, org]" :default :raw]
+   ["-o" "--output" "Output format [only raw right now]" :default :raw]
    ["-v" "--[no-]verbose" :default true]])
 
 (defn find-command [ns var]
