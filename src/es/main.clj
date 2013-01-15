@@ -9,6 +9,7 @@
             [es.command.nodes]
             [es.command.shards]
             [es.command.version]
+            [slingshot.slingshot :refer [try+]]
             ))
 
 (def opts
@@ -43,10 +44,7 @@
 (defn error [fmt & args]
   (binding [*out* *err*]
     (apply printf (str (.trim fmt) "\n") args)
-    (println)
-    (help-commands)
-    (flush))
-  (System/exit 99))
+    (flush)))
 
 (defn help [bann]
   (println "Usage: es COMMAND [OPTS]")
@@ -54,6 +52,11 @@
   (println (.replace bann "Usage:\n\n" ""))
   (println)
   (help-commands))
+
+(defn die [fmt & args]
+  (apply error fmt args)
+  (help)
+  (System/exit 99))
 
 (defn main [cmd args opts]
   (let [cmd (find-command
@@ -66,9 +69,14 @@
 (defn -main [& args]
   (let [[opts args banner] (apply cli args opts)]
     (let [[cmd & args] args
-          res (main cmd args opts)]
+          res (try+
+                (main cmd args opts)
+                (catch [:type :es.http/error] {:keys [msg] :as foo}
+                  (error msg))
+                (catch Object _
+                  (error "unexpected: %s" &throw-context)))]
       (condp = res
         :fail (if cmd
-                (error "no command %s" cmd)
+                (die "no command %s" cmd)
                 (help banner))
         (tabler opts res)))))

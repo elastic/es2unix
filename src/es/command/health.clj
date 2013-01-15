@@ -13,6 +13,4 @@
               :relocating_shards
               :initializing_shards
               :unassigned_shards)]
-    (or
-     (:http-error res)
-     [(vals res)])))
+    [(vals res)]))
