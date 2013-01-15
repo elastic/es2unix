@@ -1,0 +1,11 @@
+#!/usr/bin/zsh
+
+echo test integration...
+if curl -s localhost:9200 >/dev/null; then
+  for cmd in `es help 2>&1 | egrep '^  [hmnsv]'`; do
+    es $cmd
+  done
+else
+  echo no ES running for sanity check
+fi
+echo ...done
