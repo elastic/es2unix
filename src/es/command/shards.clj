@@ -7,7 +7,7 @@
 
 (defn go [args {:keys [url]}]
   (concat
-   (for [[k sh] (indices/shards url)]
+   (for [[k sh] (indices/shards url args)]
      (let [node (nodes/node url (-> sh :routing :node))]
        [(-> sh :routing :index)
         (-> sh :routing :shard)
@@ -19,7 +19,7 @@
         (ip (:transport_address node))
         (:name node)
         ]))
-   (for [sh (cluster/unassigned-shards url)]
+   (for [sh (cluster/unassigned-shards url args)]
      [(:index sh)
       (:shard sh)
       (if (util/primary? sh) "p" "r")
