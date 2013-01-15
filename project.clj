@@ -9,7 +9,8 @@
                  [org.clojure/tools.cli "0.2.2"]
                  [cheshire "5.0.1"]
                  [clj-http "0.6.3"]
-                 [log4j/log4j "1.2.16"]]
+                 [log4j/log4j "1.2.16"]
+                 [bultitude "0.2.0"]]
   :plugins [[lein-bin "0.2.2"]]
   :main es.main
   :uberjar-name "es.jar"
