@@ -5,8 +5,21 @@
             [es.util :as util]
             [es.format.network :refer [ip]]))
 
-(defn go [args {:keys [url]}]
+(def cols
+  ['index
+   'shard
+   'pri/rep
+   'state
+   'size
+   'size-bytes
+   'docs
+   'ip
+   'node])
+
+(defn go [args {:keys [url verbose]}]
   (concat
+   (if verbose
+     [(map str cols)])
    (for [[k sh] (indices/shards url args)]
      (let [node (nodes/node url (-> sh :routing :node))]
        [(-> sh :routing :index)
