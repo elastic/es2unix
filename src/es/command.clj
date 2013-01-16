@@ -1,5 +1,6 @@
 (ns es.command
-  (:require [es.command.health]
+  (:require [es.command.count]
+            [es.command.health]
             [es.command.indices]
             [es.command.master]
             [es.command.nodes]
@@ -7,7 +8,8 @@
             [es.command.version]))
 
 (def available
-  ['health
+  ['count
+   'health
    'indices
    'master
    'nodes

@@ -1,6 +1,8 @@
 (ns es.data.cluster
+  (:refer-clojure :exclude [count])
   (:require [es.http :as http]
             [es.data.replica :as replica]
+            [es.format.uri :as uri]
             [es.util :as util]))
 
 (defn health
@@ -36,3 +38,9 @@
                      [shname shard] (:shards index)
                      replica shard]
                  (replica/maybe replica indices))))))
+
+(defn count
+  ([url]
+     (count url "*:*"))
+  ([url query]
+     (http/get (str url "/_count?q=" (uri/encode query)))))
