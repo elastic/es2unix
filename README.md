@@ -2,9 +2,11 @@
 
 Elasticsearch API consumable by the command line.
 
-JSON is wonderful for services, but not always for humans.  The
-tabular format is compact.  es2unix strives to keep spaces significant
-so all output works with existing line-oriented *NIX tools.
+JSON isn't always the most convenient output, particularly on a
+terminal.  The tabular format has stuck around for good reason.  It's
+compact.  It's line-oriented.  es2unix strives to keep spaces
+significant so all output works with existing *NIX tools.  `grep`,
+`sort`, & `awk` are first-class citizens here.
 
 
 # Install
