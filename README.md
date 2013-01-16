@@ -55,6 +55,16 @@ You can also supply `-v`, for most commands, to print a column header.
 
 ## Shards
 
+### Node startup
+
+        % es shards
+        wiki   0 p RECOVERING 2.4gb 2634374867 - 127.0.0.1 Bloodshed
+        wiki   1 p RECOVERING 2.4gb 2623087542 - 127.0.0.1 Bloodshed
+        _river 0 p STARTED    439b         439 0 127.0.0.1 Bloodshed
+
+
+### Normal three-node cluster operation
+
         % es shards -v
         index  shard pri/rep state   size    size-bytes  docs ip        node            
         wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Cannonball I    
