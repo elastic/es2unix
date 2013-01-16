@@ -1,6 +1,8 @@
 (ns es.data.indices
-  (:require [es.http :as http]
-            [es.util :as util]))
+  (:require [es.data.cluster :as cluster]
+            [es.http :as http]
+            [es.util :as util]
+            [slingshot.slingshot :refer [throw+]]))
 
 (defn status
   ([url]
@@ -10,11 +12,26 @@
            lst (if (pos? (count lst)) (str "/" lst) "")]
        (http/get (str url lst "/_status")))))
 
+(defn replica-totals [url indices]
+  (->> (for [[nam data] (:indices (status url indices))]
+         [nam {:total
+               (apply
+                merge-with +
+                (for [[id replicas] (:shards data)
+                      replica replicas]
+                  {:bytes (-> replica :index :size_in_bytes)
+                   :docs (-> replica :docs :num_docs)}))}])
+       (into {})))
+
 (defn indices
   ([url]
      (indices url []))
   ([url indices]
-     (:indices (status url indices))))
+     (merge-with
+      merge
+      (cluster/health url indices)
+      (:indices (status url indices))
+      (replica-totals url indices))))
 
 (defn make-replica-key [routing]
   [
@@ -28,11 +45,8 @@
   ([url]
      (shards url []))
   ([url indices]
-     (->> (for [[idxname index] (:indices (status url))
-                [shname shard] (:shards index)
-                replica shard]
-            (if-let [rep (util/maybe-rep replica indices)]
-              [(make-replica-key (:routing rep)) rep]))
-          (filter identity)
-          (apply concat)
-          (apply hash-map))))
+     (->> (for [[idxname index] (:indices (status url indices))
+                [shard replicas] (:shards index)
+                replica replicas]
+            [(make-replica-key (:routing replica)) replica])
+          (into {}))))
