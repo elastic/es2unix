@@ -38,8 +38,8 @@
       (if (util/primary? sh) "p" "r")
       (:state sh)
       " "
-      0
-      0
+      " "
+      " "
       " "
       " "
       ])))
