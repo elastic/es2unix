@@ -2,10 +2,10 @@
   (:gen-class)
   (:require [clojure.tools.cli :refer [cli]]
             [bultitude.core :refer [namespaces-on-classpath]]
+            [es.format.error :refer [stack-trace]]
             [es.format.table :refer [tabler]]
             [es.command :as comm]
-            [slingshot.slingshot :refer [try+]]
-            ))
+            [slingshot.slingshot :refer [try+]]))
 
 (def opts
   [["-u" "--url" "ES instance locator" :default "http://localhost:9200"]
@@ -59,7 +59,8 @@
                 (catch [:type :es.http/error] {:keys [msg]}
                   (error msg))
                 (catch Object _
-                  (error "unexpected: %s" &throw-context)))]
+                  (error "unexpected: %s\n%s" &throw-context
+                         (-> &throw-context :throwable stack-trace))))]
       (condp = res
         :fail (if cmd
                 (die banner "no command %s" cmd))
