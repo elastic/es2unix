@@ -62,6 +62,14 @@ You can also supply `-v`, for most commands, to print a column header.
         wiki   1 p RECOVERING 2.4gb 2623087542 - 127.0.0.1 Bloodshed
         _river 0 p STARTED    439b         439 0 127.0.0.1 Bloodshed
 
+### Single node filter by index, sort reverse by bytes
+
+        % es shards elast | sort -rnk6
+        elastic-search-website 4 p STARTED 740.5kb 758345 75 127.0.0.1 Black Death
+        elastic-search-website 2 p STARTED 681.7kb 698063 75 127.0.0.1 Black Death
+        elastic-search-website 3 p STARTED 627.9kb 643016 77 127.0.0.1 Black Death
+        elastic-search-website 1 p STARTED 613kb   627786 73 127.0.0.1 Black Death
+        elastic-search-website 0 p STARTED 606.5kb 621087 67 127.0.0.1 Black Death
 
 ### Normal three-node cluster operation
 
