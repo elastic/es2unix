@@ -2,7 +2,7 @@
   (:require [es.data.cluster :as cluster]
             [es.data.indices :as indices]
             [es.data.nodes :as nodes]
-            [es.util :as util]
+            [es.data.replica :as replica]
             [es.format.network :refer [ip]]))
 
 (def cols
@@ -24,7 +24,7 @@
      (let [node (nodes/node url (-> sh :routing :node))]
        [(-> sh :routing :index)
         (-> sh :routing :shard)
-        (if (-> sh :routing util/primary?) "p" "r")
+        (if (replica/primary? sh) "p" "r")
         (:state sh)
         (-> sh :index :size)
         (-> sh :index :size_in_bytes)
@@ -35,7 +35,7 @@
    (for [sh (cluster/unassigned-shards url args)]
      [(:index sh)
       (:shard sh)
-      (if (util/primary? sh) "p" "r")
+      (if (replica/primary? sh) "p" "r")
       (:state sh)
       " "
       " "

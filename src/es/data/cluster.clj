@@ -1,6 +1,7 @@
 (ns es.data.cluster
   (:require [es.http :as http]
-            [es.util :refer [maybe-rep]]))
+            [es.data.replica :as replica]
+            [es.util :as util]))
 
 (defn health
   ([url]
@@ -23,7 +24,7 @@
      (let [st (state url)]
        (filter identity
                (for [replica (-> st :routing_nodes :unassigned)]
-                 (maybe-rep replica indices))))))
+                 (replica/maybe replica indices))))))
 
 (defn shards
   ([url]
@@ -34,4 +35,4 @@
                (for [[idxname index] (-> st :routing_table :indices)
                      [shname shard] (:shards index)
                      replica shard]
-                 (maybe-rep replica indices))))))
+                 (replica/maybe replica indices))))))

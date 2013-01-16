@@ -1,15 +1,13 @@
 (ns es.util)
 
-(defn maybe-rep
-  "Look for matches in indices for the :index in the replica.  It
-  could be in :routing depending on the context."
-  ([rep indices]
-     (if (seq indices)
-       (if (some #(.contains (or (get-in rep [:routing :index])
-                                 (:index rep)
-                                 "!@#$%^") %) indices)
-         rep)
-       rep)))
+(defn match-any?
+  "If any of the string frags match string thing or there are no frags,
+  return the thing. Otherwise nil."
+  ([thing frags]
+     (if (seq frags)
+       (if (some #(.contains thing %) frags)
+         thing)
+       thing)))
 
 (defn comma-list [idxs]
   (if (seq idxs)
@@ -19,12 +17,3 @@
          (apply str))
     ""))
 
-(defn primary? [replica]
-  (if (contains? replica :primary)
-    (:primary replica)
-    (if-let [routing (-> replica :routing)]
-      (-> routing :primary)
-      (throw (Exception.
-              (with-out-str
-                (println "replica doesn't have routing info")
-                (prn replica)))))))
