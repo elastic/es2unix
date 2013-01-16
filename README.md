@@ -41,6 +41,20 @@ You can also supply `-v`, for most commands, to print a column header.
         cluster status nodes data pri shards relo init unassign
         kluster green      2    2   3      6    0    0        0
 
+## Count
+
+Sometimes you need a quick count to tell whether a cluster has any
+data and whether it's indexing.  You can also supply a query.
+
+        % es count
+        2,319,799
+        % es count elasticsearch
+        3 "q=elasticsearch"
+        % es count "john deacon"
+        225,839 "q=john deacon"
+        % es count "\"saved by the bell\""
+        220 "q="saved by the bell""
+
 ## Master
 
         % es master
