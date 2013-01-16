@@ -28,7 +28,7 @@
         (:state sh)
         (-> sh :index :size)
         (-> sh :index :size_in_bytes)
-        (-> sh :docs :num_docs)
+        (or (-> sh :docs :num_docs) "-")
         (ip (:transport_address node))
         (:name node)
         ]))
