@@ -11,7 +11,8 @@
                  [clj-http "0.6.3"]
                  [log4j/log4j "1.2.16"]
                  [bultitude "0.2.0"]
-                 [slingshot "0.10.3"]]
+                 [slingshot "0.10.3"]
+                 [com.google.guava/guava "14.0-rc1"]]
   :plugins [[lein-bin "0.2.2"]]
   :main es.main
   :uberjar-name "es.jar"
