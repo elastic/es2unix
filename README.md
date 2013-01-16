@@ -46,6 +46,14 @@ You can also supply `-v`, for most commands, to print a column header.
         % es master
         J-erllamTOiW5WoGVUd04A 127.0.0.1 Slade, Frederick
 
+
+## Indices
+
+        % es indices -v
+        status name   pri rep    docs        size
+        green  _river   0   1       4        8068
+        green  wiki     1   1 1104894 13805525784
+
 ## Nodes
 
         % es nodes
