@@ -11,7 +11,7 @@
    'pri/rep
    'state
    'size
-   'size-bytes
+   'bytes
    'docs
    'ip
    'node])
