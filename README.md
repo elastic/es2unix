@@ -37,9 +37,9 @@ You can also supply `-v`, for most commands, to print a column header.
 
 ## Health
 
-        % es health
-        kluster green 4 3 6 17 0 0 0
-
+        % lein run health -v
+        cluster status nodes data pri shards relo init unassign
+        kluster green      2    2   3      6    0    0        0
 
 ## Master
 
@@ -53,6 +53,7 @@ You can also supply `-v`, for most commands, to print a column header.
         status name   pri rep    docs        size
         green  _river   0   1       4        8068
         green  wiki     1   1 1104894 13805525784
+
 
 ## Nodes
 
@@ -74,12 +75,11 @@ You can also supply `-v`, for most commands, to print a column header.
 
 ### Single node filter by index, sort reverse by bytes
 
-        % es shards elast | sort -rnk6
-        elastic-search-website 4 p STARTED 740.5kb 758345 75 127.0.0.1 Black Death
-        elastic-search-website 2 p STARTED 681.7kb 698063 75 127.0.0.1 Black Death
-        elastic-search-website 3 p STARTED 627.9kb 643016 77 127.0.0.1 Black Death
-        elastic-search-website 1 p STARTED 613kb   627786 73 127.0.0.1 Black Death
-        elastic-search-website 0 p STARTED 606.5kb 621087 67 127.0.0.1 Black Death
+        % es shards wik | sort -rnk6
+        wiki 1 r STARTED 2.7gb 2980767835 276016 127.0.0.1 Namora     
+        wiki 0 r STARTED 2.7gb 2953985585 276441 127.0.0.1 Namora     
+        wiki 1 p STARTED 2.7gb 2909784771 276016 127.0.0.1 Android Man
+        wiki 0 p STARTED 2.6gb 2846741702 276441 127.0.0.1 Android Man
 
 ### Normal three-node cluster operation
 
