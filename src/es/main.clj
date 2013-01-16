@@ -38,10 +38,10 @@
   (println)
   (help-commands))
 
-(defn die [banner fmt & args]
+(defn die [fmt & args]
   (apply error fmt args)
-  (help banner)
-  (System/exit 99))
+  (flush)
+  (System/exit 1))
 
 (defn main [cmd args opts]
   (let [cmd (find-command
@@ -53,15 +53,18 @@
 
 (defn -main [& args]
   (let [[opts args banner] (apply cli args opts)]
-    (let [[cmd & args] args
-          res (try+
-                (main cmd args opts)
-                (catch [:type :es.http/error] {:keys [msg]}
-                  (error msg))
-                (catch Object _
-                  (error "unexpected: %s\n%s" &throw-context
-                         (-> &throw-context :throwable stack-trace))))]
-      (condp = res
-        :fail (if cmd
-                (die banner "no command %s" cmd))
-        (tabler opts res)))))
+    (try+
+      (let [[cmd & args] args
+            _ (when (= cmd "help")
+                (help banner)
+                (die ""))
+            res (main cmd args opts)]
+        (condp = res
+          :fail (if cmd
+                  (die "no command %s" cmd))
+          (tabler opts res)))
+      (catch [:type :es.http/error] {:keys [msg]}
+        (die msg))
+      (catch Object _
+        (die "unexpected: %s\n%s" &throw-context
+               (-> &throw-context :throwable stack-trace))))))
