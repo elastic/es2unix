@@ -17,3 +17,11 @@
          (apply str))
     ""))
 
+(defn commafy [n]
+  (->> (str n)
+       reverse
+       (partition-all 3)
+       (interpose ",")
+       (apply concat)
+       reverse
+       (apply str)))
