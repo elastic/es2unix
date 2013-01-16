@@ -6,8 +6,8 @@
    'name
    'pri
    'rep
-   'docs
-   'size])
+   'size
+   'docs])
 
 (defn go [args {:keys [url verbose]}]
   (concat
@@ -20,5 +20,5 @@
         (name nam)
         pri
         (-> data :health :number_of_replicas)
-        (-> data :total :docs)
-        (-> data :total :bytes)]))))
+        (-> data :total :bytes)
+        (-> data :total :docs)]))))
