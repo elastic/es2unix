@@ -2,8 +2,16 @@
   (:require [es.http :as http]
             [es.util :refer [maybe-rep]]))
 
-(defn health [url]
-  (http/get (str url "/_cluster/health")))
+(defn health
+  ([url]
+     (http/get (str url "/_cluster/health")))
+  ([url indices]
+     (let [healths (http/get (str url "/_cluster/health?level=indices"))]
+       (->> (for [[nam data] (:indices healths)]
+              (if (util/match-any? (name nam) indices)
+                [nam {:health data}]))
+            (filter identity)
+            (into {})))))
 
 (defn state [url]
   (http/get (str url "/_cluster/state?filter_metadata=1")))
