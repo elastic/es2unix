@@ -37,7 +37,7 @@ You can also supply `-v`, for most commands, to print a column header.
 
 ## Health
 
-        % lein run health -v
+        % es health -v
         cluster status nodes data pri shards relo init unassign
         kluster green      2    2   3      6    0    0        0
 
