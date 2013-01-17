@@ -9,7 +9,7 @@
               (cluster/count url))
         failed (or (get-in res [:_shards :failed]) 99999)
         out (util/commafy (:count res))
-        out (if q (format "%s \"q=%s\"" out q) out)
+        out (if q (format "%s \"%s\"" out q) out)
         out (if (pos? failed)
               (format "%s ...with %d failed shards!" out failed)
               out)]
