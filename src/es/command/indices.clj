@@ -20,5 +20,6 @@
         (name nam)
         pri
         (-> data :health :number_of_replicas)
-        (-> data :total :bytes)
-        (-> data :total :docs)]))))
+        ;; nulls possible with red index
+        (or (-> data :total :bytes) " ")
+        (or (-> data :total :docs) " ")]))))
