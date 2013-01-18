@@ -1,5 +1,6 @@
 (ns es.command.indices
-  (:require [es.data.indices :as idx]))
+  (:require [es.data.indices :as idx]
+            [es.util :refer [maybe-get-in]]))
 
 (def cols
   ['status
@@ -7,6 +8,7 @@
    'pri
    'rep
    'size
+   'bytes
    'docs])
 
 (defn go [args {:keys [url verbose]}]
@@ -16,10 +18,11 @@
    (for [[nam data] (idx/indices url args)]
      (let [pri (- (-> data :health :number_of_shards)
                   (-> data :health :number_of_replicas))]
-       [(-> data :health :status)
+       [(maybe-get-in data :health :status)
         (name nam)
         pri
-        (-> data :health :number_of_replicas)
-        ;; nulls possible with red index
-        (or (-> data :total :bytes) " ")
-        (or (-> data :total :docs) " ")]))))
+        (maybe-get-in data :health :number_of_replicas)
+        (maybe-get-in data :stats :total :store :size)
+        (maybe-get-in data :stats :total :store :size_in_bytes)
+        (maybe-get-in data :stats :total :docs :count)]))))
+

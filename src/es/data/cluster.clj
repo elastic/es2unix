@@ -12,7 +12,7 @@
      (let [healths (http/get (str url "/_cluster/health?level=indices"))]
        (->> (for [[nam data] (:indices healths)]
               (if (util/match-any? (name nam) indices)
-                [nam {:health data}]))
+                [nam data]))
             (filter identity)
             (into {})))))
 
