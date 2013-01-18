@@ -8,12 +8,12 @@
     :str))
 
 (defn widths [row]
-  (apply merge
-         (map-indexed (fn [i cell]
-                        (sorted-map
-                         i {:type (type-of cell)
-                            :size (count (str (or cell " ")))}))
-                      row)))
+  (->> row
+       (map-indexed (fn [i cell]
+                      (sorted-map
+                       i {:type (type-of cell)
+                          :size (count (str (or cell " ")))})))
+       (apply merge)))
 
 (defn fmtmeta [data]
   (apply
