@@ -3,7 +3,8 @@
             [es.data.indices :as indices]
             [es.data.nodes :as nodes]
             [es.data.replica :as replica]
-            [es.format.network :refer [ip]]))
+            [es.format.network :refer [ip]]
+            [es.format.table :refer [make-cell]]))
 
 (def cols
   ['index
@@ -26,18 +27,21 @@
         (-> sh :routing :shard)
         (if (replica/primary? sh) "p" "r")
         (:state sh)
-        (-> sh :index :size)
+        (make-cell
+         {:val (-> sh :index :size)
+          :just :->})
         (-> sh :index :size_in_bytes)
         (or (-> sh :docs :num_docs) "-")
         (ip (:transport_address node))
-        (:name node)
-        ]))
+        (:name node)]))
    (for [sh (cluster/unassigned-shards url args)]
      [(:index sh)
       (:shard sh)
       (if (replica/primary? sh) "p" "r")
       (:state sh)
-      " "
+      (make-cell
+       {:val " "
+        :just :->})
       " "
       " "
       " "
