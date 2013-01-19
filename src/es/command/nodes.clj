@@ -8,8 +8,8 @@
    'port
    'tran-ip
    'tran-port
-   'master?
    'data/client
+   'master?
    'name])
 
 (defn go [args {:keys [url verbose]}]
@@ -37,6 +37,6 @@
           (:port httpaddr)
           (:ip tranaddr)
           (:port tranaddr)
-          master?
           data?
+          master?
           (:name node)])))))
