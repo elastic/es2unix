@@ -69,6 +69,14 @@ data and whether it's indexing.  You can also supply a query.
         green  wiki     1   1 1104894 13805525784
 
 
+
+        % es indices | grep \^red
+        red    bb                               5 0                
+        red    test                             4 1   218b   218  0
+        red    enron                            5 0                
+        red    uno                              1 0                
+
+
 ## Nodes
 
         % es nodes
