@@ -68,13 +68,14 @@ data and whether it's indexing.  You can also supply a query.
         green  _river   0   1       4        8068
         green  wiki     1   1 1104894 13805525784
 
-
+Maybe your cluster is red and you need to know which indices are
+affected:
 
         % es indices | grep \^red
-        red    bb                               5 0                
-        red    test                             4 1   218b   218  0
-        red    enron                            5 0                
-        red    uno                              1 0                
+        red    bb           5 0                
+        red    test         4 1   218b   218  0
+        red    enron        5 0                
+        red    uno          1 0                
 
 
 ## Nodes
