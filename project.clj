@@ -2,6 +2,7 @@
   (-> "etc/version.txt" slurp .trim)
   :description "es2unix"
   :resource-paths ["etc" "resources"]
+  :source-paths ["src/clj"]
   :url "http://elasticsearch.org/"
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0.html"}
@@ -13,7 +14,14 @@
                  [bultitude "0.2.0"]
                  [slingshot "0.10.3"]
                  [com.google.guava/guava "14.0-rc1"]]
-  :plugins [[lein-bin "0.2.2"]]
+  :plugins [[lein-bin "0.2.2"]
+            [lein-cljsbuild "0.3.0"]]
   :main es.main
   :uberjar-name "es.jar"
-  :executable-name "es")
+  :executable-name "es"
+  :cljsbuild {:builds
+              [{:source-paths ["src/cljs"]
+                :compiler {:output-to "target/js/main.js"
+                           :optimizations :simple
+                           :pretty-print true
+                           :target :nodejs}}]})
