@@ -12,11 +12,11 @@
    'bytes
    'docs])
 
-(defn indices [args {:keys [url verbose]}]
+(defn indices [http args {:keys [verbose]}]
   (concat
    (if verbose
      [(map str cols)])
-   (for [[nam data] (idx/indices url args)]
+   (for [[nam data] (idx/indices http args)]
      (let [pri (- (-> data :health :number_of_shards)
                   (-> data :health :number_of_replicas))]
        [(maybe-get-in data :health :status)

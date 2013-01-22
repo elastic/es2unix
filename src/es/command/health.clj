@@ -12,10 +12,10 @@
    ['init     :initializing_shards]
    ['unassign :unassigned_shards]])
 
-(defn health [args {:keys [url verbose]}]
+(defn health [http args {:keys [verbose]}]
   (concat
    (if verbose
      [(map (comp name first) cols)])
-   (let [res (cluster/health url)
+   (let [res (cluster/health http)
          vals (apply juxt (map second cols))]
      [(vals res)])))

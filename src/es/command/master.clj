@@ -2,8 +2,8 @@
   (:require [es.data.nodes :as nodes]
             [es.format.network :refer [ip]]))
 
-(defn master [args {:keys [url]}]
-  (let [res (nodes/master url)]
+(defn master [http args opts]
+  (let [res (nodes/master http)]
     (or
      (:http-error res)
      (let [id (:master_node res)

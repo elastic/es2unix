@@ -17,12 +17,12 @@
    'ip
    'node])
 
-(defn shards [args {:keys [url verbose]}]
+(defn shards [http args {:keys [verbose]}]
   (concat
    (if verbose
      [(map str cols)])
-   (for [[k sh] (indices/shards url args)]
-     (let [node (nodes/node url (-> sh :routing :node))]
+   (for [[k sh] (indices/shards http args)]
+     (let [node (nodes/node http (-> sh :routing :node))]
        [(-> sh :routing :index)
         (-> sh :routing :shard)
         (if (replica/primary? sh) "p" "r")
@@ -34,7 +34,7 @@
         (or (-> sh :docs :num_docs) "-")
         (ip (:transport_address node))
         (:name node)]))
-   (for [sh (cluster/unassigned-shards url args)]
+   (for [sh (cluster/unassigned-shards http args)]
      [(:index sh)
       (:shard sh)
       (if (replica/primary? sh) "p" "r")

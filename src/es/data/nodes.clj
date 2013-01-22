@@ -8,14 +8,12 @@
    :data true
    :master true})
 
-(defn nodes [url]
-  (-> (str url "/_nodes")
-      http/get
-      :nodes))
+(defn nodes [http]
+  (-> "/_nodes" http :nodes))
 
-(defn master [url]
-  (http/get
-   (str url "/_cluster/state?"
+(defn master [http]
+  (http
+   (str "/_cluster/state?"
         "filter_metadata=1&"
         "filter_routing_table=1&"
         "filter_indices=1")))
@@ -47,7 +45,7 @@
 (defn master-id [url]
   (:master_node (master url)))
 
-(defn node [url id]
-  (let [nodes (nodes url)
+(defn node [http id]
+  (let [nodes (nodes http)
         id (keyword id)]
     (nodes id)))

@@ -4,7 +4,7 @@
             [cheshire.core :as json]
             [es.local :as local]
             [slingshot.slingshot :refer [throw+]])
-  (:import (java.net URI)))
+  (:import (java.net URI URL)))
 
 (defn local? [url]
   (and (string? url) (.startsWith url "local:")))
@@ -61,3 +61,11 @@
    (fn [args]
      (let [[arg] args]
        (if (not (local? arg)) true)))))
+
+(defn fetcher [base]
+  (fn f
+    ([]
+       (f "/"))
+    ([path]
+       (let [url (-> (URL. base) (URL. path) str)]
+         (get url)))))

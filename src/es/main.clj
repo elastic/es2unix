@@ -4,6 +4,7 @@
             [bultitude.core :refer [namespaces-on-classpath]]
             [es.format.error :refer [stack-trace]]
             [es.format.table :refer [tabler]]
+            [es.http :as http]
             [es.command :as comm]
             [slingshot.slingshot :refer [try+]]))
 
@@ -46,9 +47,10 @@
 (defn main [cmd args opts]
   (let [cmd (find-command
              (symbol (format "es.command.%s" cmd))
-             (symbol cmd))]
+             (symbol cmd))
+        http (http/fetcher (:url opts))]
     (if cmd
-      (cmd args opts)
+      (cmd http args opts)
       :fail)))
 
 (defn -main [& args]
@@ -67,4 +69,4 @@
         (die msg))
       (catch Object _
         (die "unexpected: %s\n%s" &throw-context
-               (-> &throw-context :throwable stack-trace))))))
+             (-> &throw-context :throwable stack-trace))))))

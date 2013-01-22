@@ -12,12 +12,12 @@
    'master?
    'name])
 
-(defn nodes [args {:keys [url verbose]}]
+(defn nodes [http args {:keys [verbose]}]
   (concat
    (if verbose
      [(map str cols)])
-   (let [nodes (nodes/nodes url)
-         mast (nodes/master-id url)]
+   (let [nodes (nodes/nodes http)
+         mast (nodes/master-id http)]
      (for [[id node] nodes]
        (let [httpaddr (-> node :http_address parse-addr)
              tranaddr (-> node :transport_address parse-addr)
