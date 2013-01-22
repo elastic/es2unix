@@ -30,6 +30,9 @@
        reverse
        (apply str)))
 
+(defn substr [s n]
+  (apply str (take n (str s))))
+
 (defn deep-merge-with
   "Like merge-with, but merges maps recursively, applying the given fn
   only when there's a non-map at a particular level.
