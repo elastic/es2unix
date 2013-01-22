@@ -2,14 +2,14 @@
   (:require [clojure.java.io :as io]
             [es.http :as http]))
 
-(defn version []
+(defn version* []
   (-> "version.txt" io/resource slurp .trim))
 
 (defn esver [url]
   (get-in (http/get url) [:version :number]))
 
-(defn go [args {:keys [url]}]
-  (let [ver (version)
+(defn version [args {:keys [url]}]
+  (let [ver (version*)
         esver (or (esver url)
                   (format "not running at %s" url))]
     [["es" ver]

@@ -17,7 +17,7 @@
    'ip
    'node])
 
-(defn go [args {:keys [url verbose]}]
+(defn shards [args {:keys [url verbose]}]
   (concat
    (if verbose
      [(map str cols)])

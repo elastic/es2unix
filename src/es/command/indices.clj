@@ -12,7 +12,7 @@
    'bytes
    'docs])
 
-(defn go [args {:keys [url verbose]}]
+(defn indices [args {:keys [url verbose]}]
   (concat
    (if verbose
      [(map str cols)])

@@ -12,7 +12,7 @@
    'master?
    'name])
 
-(defn go [args {:keys [url verbose]}]
+(defn nodes [args {:keys [url verbose]}]
   (concat
    (if verbose
      [(map str cols)])

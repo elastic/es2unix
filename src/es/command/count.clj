@@ -1,8 +1,9 @@
 (ns es.command.count
+  (:refer-clojure :exclude [count])
   (:require [es.data.cluster :as cluster]
             [es.util :as util]))
 
-(defn go [args {:keys [url verbose]}]
+(defn count [args {:keys [url verbose]}]
   (let [[q] args
         res (if q
               (cluster/count url q)

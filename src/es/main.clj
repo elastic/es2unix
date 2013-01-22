@@ -46,7 +46,7 @@
 (defn main [cmd args opts]
   (let [cmd (find-command
              (symbol (format "es.command.%s" cmd))
-             'go)]
+             (symbol cmd))]
     (if cmd
       (cmd args opts)
       :fail)))

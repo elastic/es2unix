@@ -12,7 +12,7 @@
    ['init     :initializing_shards]
    ['unassign :unassigned_shards]])
 
-(defn go [args {:keys [url verbose]}]
+(defn health [args {:keys [url verbose]}]
   (concat
    (if verbose
      [(map (comp name first) cols)])

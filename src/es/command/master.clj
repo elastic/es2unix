@@ -2,7 +2,7 @@
   (:require [es.data.nodes :as nodes]
             [es.format.network :refer [ip]]))
 
-(defn go [args {:keys [url]}]
+(defn master [args {:keys [url]}]
   (let [res (nodes/master url)]
     (or
      (:http-error res)
