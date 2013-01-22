@@ -55,8 +55,9 @@
             ret))
         (apply f args)))))
 
-(def get (memoize-cond
-          get*
-          (fn [args]
-            (let [[arg] args]
-              (if (not (local? arg)) true)))))
+(def get
+  (memoize-cond
+   get*
+   (fn [args]
+     (let [[arg] args]
+       (if (not (local? arg)) true)))))
