@@ -19,9 +19,11 @@
   :main es.main
   :uberjar-name "es.jar"
   :executable-name "es"
-  :cljsbuild {:builds
-              [{:source-paths ["src/cljs"]
-                :compiler {:output-to "target/js/main.js"
-                           :optimizations :simple
-                           :pretty-print true
-                           :target :nodejs}}]})
+  :cljsbuild {:crossovers [es.common.cluster
+                           es.format.table]
+              :builds [{:source-paths ["src/cljs"]
+                        :crossover-path "target/common"
+                        :compiler {:output-to "target/js/main.js"
+                                   :optimizations :simple
+                                   :pretty-print true
+                                   :target :nodejs}}]})
