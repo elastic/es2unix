@@ -55,6 +55,42 @@ data and whether it's indexing.  You can also supply a query.
         % es count "\"saved by the bell\""
         220 "q="saved by the bell""
 
+## Search
+
+Not exhaustive access to the query API by any stretch, but it suffices
+when you need to get a glance of the data in your cluster.  Searches
+across indices with a default query of `*:*`.
+
+        % es search
+        1.0     wiki    page 1228929
+        1.0     wiki    page 1229142
+        1.0     wiki    page 1229146
+        1.0     wiki    page 1229153
+        1.0     wiki    page 1228943
+        1.0     wiki    page 1229155
+        1.0     wiki    page 1228950
+        1.0     wiki    page 1229159
+        1.0     wiki    page 1228956
+        1.0     wiki    page 1229160
+         Total: 2319799
+
+Can also specify a query, like `es search \"george costanza\"`, and,
+possibly more interestingly, a list of fields to return.
+
+        % es search -v "george costanza" title
+        score   index  type id      title              
+        5.78647 wiki   page 660183  George Costansa    
+        5.78647 wiki   page 273868  George Constanza   
+        5.63803 wiki   page 865781  Vandelay Industries
+        4.69835 wiki   page 932333  Art Vandelay       
+        4.69835 wiki   page 2147975 Can't Stand Ya     
+        4.67351 wiki   page 2486208 Art vandelay       
+        4.07630 wiki   page 2147959 Costanza           
+        3.23200 wiki   page 2147971 The Costanza family
+        3.21007 wiki   page 2147972 Costanza family    
+        2.94863 wiki   page 4946953 Santa costanza     
+         Total: 118186                                 
+
 ## Master
 
         % es master
