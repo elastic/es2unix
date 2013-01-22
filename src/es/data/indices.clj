@@ -1,8 +1,7 @@
 (ns es.data.indices
   (:require [es.data.cluster :as cluster]
             [es.http :as http]
-            [es.util :as util]
-            [slingshot.slingshot :refer [throw+]]))
+            [es.util :as util]))
 
 (defn index-slice
   ([url indices endpoint]
