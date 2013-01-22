@@ -5,6 +5,7 @@
             [es.command.master]
             [es.command.nodes]
             [es.command.shards]
+            [es.command.search]
             [es.command.version]))
 
 (def available
@@ -13,5 +14,6 @@
    'indices
    'master
    'nodes
+   'search
    'shards
    'version])
