@@ -19,19 +19,19 @@
   (http "/_cluster/state?filter_metadata=1"))
 
 (defn unassigned-shards
-  ([url]
-     (unassigned-shards url []))
-  ([url indices]
-     (let [st (state url)]
+  ([http]
+     (unassigned-shards http []))
+  ([http indices]
+     (let [st (state http)]
        (filter identity
                (for [replica (-> st :routing_nodes :unassigned)]
                  (replica/maybe replica indices))))))
 
 (defn shards
-  ([url]
-     (shards url []))
-  ([url indices]
-     (let [st (state url)]
+  ([http]
+     (shards http []))
+  ([http indices]
+     (let [st (state http)]
        (filter identity
                (for [[idxname index] (-> st :routing_table :indices)
                      [shname shard] (:shards index)
