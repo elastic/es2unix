@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+rel=$1
+new=$2
+
+if [[ -z $rel && -z $new ]]; then
+  echo $0 RELVER NEWVER
+  exit 1
+fi
+
+echo $rel >etc/version.txt
+make package
+bin/test || exit 1
+
+git commit -a -m "v${rel}"
+git tag -f -am v${rel} v${rel}
+make deploy S3CREDS=~/.s3cfg-esdownload
+echo $new >etc/version.txt
+git commit -a -m "v${new}"
