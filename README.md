@@ -133,7 +133,7 @@ Heap across the cluster.
 
 For some quick and dirty monitoring, I like to put this in a loop.
 
-        % while true; do es heap | sort -rnk6 | head -1; sleep 10; done
+        % while true; do es heap | sort -rnk6 | head -1; sleep 30; done
         XO6c2A1D 57.3mb 60157200 123.7mb 129761280 46.4% 127.0.0.1 Junkpile
         XO6c2A1D 54.7mb 57405904 123.7mb 129761280 44.2% 127.0.0.1 Junkpile
         XO6c2A1D 62.7mb 65834752 123.7mb 129761280 50.7% 127.0.0.1 Junkpile
