@@ -31,7 +31,7 @@ You can also supply `-v`, for most commands, to print a column header.
 ## Version
 
         % es version
-        es            1.0.0       
+        es            1.0.0
         elasticsearch 0.21.0.Beta1
 
 
@@ -78,18 +78,18 @@ Can also specify a query, like `es search \"george costanza\"`, and,
 possibly more interestingly, a list of fields to return.
 
         % es search -v "george costanza" title
-        score   index  type id      title              
-        5.78647 wiki   page 660183  George Costansa    
-        5.78647 wiki   page 273868  George Constanza   
+        score   index  type id      title
+        5.78647 wiki   page 660183  George Costansa
+        5.78647 wiki   page 273868  George Constanza
         5.63803 wiki   page 865781  Vandelay Industries
-        4.69835 wiki   page 932333  Art Vandelay       
-        4.69835 wiki   page 2147975 Can't Stand Ya     
-        4.67351 wiki   page 2486208 Art vandelay       
-        4.07630 wiki   page 2147959 Costanza           
+        4.69835 wiki   page 932333  Art Vandelay
+        4.69835 wiki   page 2147975 Can't Stand Ya
+        4.67351 wiki   page 2486208 Art vandelay
+        4.07630 wiki   page 2147959 Costanza
         3.23200 wiki   page 2147971 The Costanza family
-        3.21007 wiki   page 2147972 Costanza family    
-        2.94863 wiki   page 4946953 Santa costanza     
-         Total: 118186                                 
+        3.21007 wiki   page 2147972 Costanza family
+        2.94863 wiki   page 4946953 Santa costanza
+         Total: 118186
 
 ## Master
 
@@ -108,19 +108,20 @@ Maybe your cluster is red and you need to know which indices are
 affected:
 
         % es indices | grep \^red
-        red    bb           5 0                
+        red    bb           5 0
         red    test         4 1   218b   218  0
-        red    enron        5 0                
-        red    uno          1 0                
+        red    enron        5 0
+        red    uno          1 0
 
 
 ## Nodes
 
         % es nodes
-        Uv1Iy8FvR0y6_RzPXKBolg 127.0.0.1 9201 127.0.0.1 9300   d Cannonball I          
-        J-erllamTOiW5WoGVUd04A 127.0.0.1 9200 127.0.0.1 9301 * d Slade, Frederick      
+        Uv1Iy8FvR0y6_RzPXKBolg 127.0.0.1 9201 127.0.0.1 9300   d Cannonball I
+        J-erllamTOiW5WoGVUd04A 127.0.0.1 9200 127.0.0.1 9301 * d Slade, Frederick
         j27iagsmQQaeIpl6yU6mCg 127.0.0.1 9203 127.0.0.1 9303 - c Georgianna Castleberry
-        T1aFDU2BSUm748gYxjEN9w 127.0.0.1 9202 127.0.0.1 9302   d Living Tribunal       
+        T1aFDU2BSUm748gYxjEN9w 127.0.0.1 9202 127.0.0.1 9302   d Living Tribunal
+
 ## Heap
 
 Heap across the cluster.
@@ -142,9 +143,9 @@ For some quick and dirty monitoring, I like to put this in a loop.
         XO6c2A1D   52mb 54528424 123.7mb 129761280 42.0% 127.0.0.1 Junkpile
         XO6c2A1D 46.5mb 48787064 123.7mb 129761280 37.6% 127.0.0.1 Junkpile
 
-This is extremely helpful during indexing, for example.  If you see a
-single node showing up a lot, you might have hot shard(s) there.  If
-you see all the nodes regularly showing up with varying heap usage
+This can be extremely helpful during indexing, for example.  If you
+see a single node showing up a lot, you might have hot shard(s) there.
+If you see all the nodes regularly showing up with varying heap usage
 percentage, it's likely a healthy cluster with good shard
 distribution.
 
@@ -164,32 +165,32 @@ similarly helpful inferences.
 ### Single node filter by index, sort reverse by bytes
 
         % es shards wik | sort -rnk6
-        wiki 1 r STARTED 2.7gb 2980767835 276016 127.0.0.1 Namora     
-        wiki 0 r STARTED 2.7gb 2953985585 276441 127.0.0.1 Namora     
+        wiki 1 r STARTED 2.7gb 2980767835 276016 127.0.0.1 Namora
+        wiki 0 r STARTED 2.7gb 2953985585 276441 127.0.0.1 Namora
         wiki 1 p STARTED 2.7gb 2909784771 276016 127.0.0.1 Android Man
         wiki 0 p STARTED 2.6gb 2846741702 276441 127.0.0.1 Android Man
 
 ### Normal three-node cluster operation
 
         % es shards -v
-        index  shard pri/rep state   size    size-bytes  docs ip        node            
-        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Cannonball I    
-        wiki       0 p       STARTED 404.8mb  424543961 28826 127.0.0.1 Cannonball I    
-        wiki       2 p       STARTED 406.9mb  426734771 28718 127.0.0.1 Cannonball I    
-        _river     0 p       STARTED 79b             79     0 127.0.0.1 Cannonball I    
-        wiki       3 p       STARTED 409.1mb  429013649 28761 127.0.0.1 Cannonball I    
-        wiki       4 p       STARTED 410.6mb  430608757 28819 127.0.0.1 Cannonball I    
+        index  shard pri/rep state   size    size-bytes  docs ip        node
+        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Cannonball I
+        wiki       0 p       STARTED 404.8mb  424543961 28826 127.0.0.1 Cannonball I
+        wiki       2 p       STARTED 406.9mb  426734771 28718 127.0.0.1 Cannonball I
+        _river     0 p       STARTED 79b             79     0 127.0.0.1 Cannonball I
+        wiki       3 p       STARTED 409.1mb  429013649 28761 127.0.0.1 Cannonball I
+        wiki       4 p       STARTED 410.6mb  430608757 28819 127.0.0.1 Cannonball I
         wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Slade, Frederick
         wiki       2 r       STARTED 406.9mb  426738791 28718 127.0.0.1 Slade, Frederick
         wiki       3 r       STARTED 409.1mb  429017254 28761 127.0.0.1 Slade, Frederick
         _river     0 r       STARTED 79b             79     0 127.0.0.1 Slade, Frederick
         wiki       4 r       STARTED 410.6mb  430611290 28819 127.0.0.1 Slade, Frederick
-        wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Living Tribunal 
+        wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Living Tribunal
         wiki       1 p       STARTED 404.2mb  423851451 28576 127.0.0.1 Slade, Frederick
-        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Living Tribunal 
-        wiki       2 r       STARTED 406.9mb  426734751 28718 127.0.0.1 Living Tribunal 
-        wiki       3 r       STARTED 409.1mb  429013629 28761 127.0.0.1 Living Tribunal 
-        wiki       4 r       STARTED 410.6mb  430608737 28819 127.0.0.1 Living Tribunal 
+        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Living Tribunal
+        wiki       2 r       STARTED 406.9mb  426734751 28718 127.0.0.1 Living Tribunal
+        wiki       3 r       STARTED 409.1mb  429013629 28761 127.0.0.1 Living Tribunal
+        wiki       4 r       STARTED 410.6mb  430608737 28819 127.0.0.1 Living Tribunal
 
 # Contributing
 
@@ -200,15 +201,15 @@ es2unix is written in Clojure.  You'll need leiningen 2.0+ to build.
 # License
 
         This software is licensed under the Apache 2 license, quoted below.
-        
+
         Copyright 2009-2012 Shay Banon and ElasticSearch <http://www.elasticsearch.org>
-        
+
         Licensed under the Apache License, Version 2.0 (the "License"); you may not
         use this file except in compliance with the License. You may obtain a copy of
         the License at
-        
+
             http://www.apache.org/licenses/LICENSE-2.0
-            
+
         Unless required by applicable law or agreed to in writing, software
         distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
         WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
