@@ -121,6 +121,35 @@ affected:
         J-erllamTOiW5WoGVUd04A 127.0.0.1 9200 127.0.0.1 9301 * d Slade, Frederick      
         j27iagsmQQaeIpl6yU6mCg 127.0.0.1 9203 127.0.0.1 9303 - c Georgianna Castleberry
         T1aFDU2BSUm748gYxjEN9w 127.0.0.1 9202 127.0.0.1 9302   d Living Tribunal       
+## Heap
+
+Heap across the cluster.
+
+        % es heap | sort -rnk6
+        XO6c2A1D 23.9mb 25138608 123.7mb  129761280 19.4% 127.0.0.1 Junkpile
+        uVP8g9_l 94.6mb 99257976 990.7mb 1038876672  9.6% 127.0.0.1 Hammond, Jim
+        pjbeg_k8 76.9mb 80730208 990.7mb 1038876672  7.8% 127.0.0.1 Scarlet Centurion
+
+For some quick and dirty monitoring, I like to put this in a loop.
+
+        % while true; do es heap | sort -rnk6 | head -1; sleep 10; done
+        XO6c2A1D 57.3mb 60157200 123.7mb 129761280 46.4% 127.0.0.1 Junkpile
+        XO6c2A1D 54.7mb 57405904 123.7mb 129761280 44.2% 127.0.0.1 Junkpile
+        XO6c2A1D 62.7mb 65834752 123.7mb 129761280 50.7% 127.0.0.1 Junkpile
+        XO6c2A1D 56.9mb 59743504 123.7mb 129761280 46.0% 127.0.0.1 Junkpile
+        XO6c2A1D 52.1mb 54676216 123.7mb 129761280 42.1% 127.0.0.1 Junkpile
+        XO6c2A1D 37.1mb 38971744 123.7mb 129761280 30.0% 127.0.0.1 Junkpile
+        XO6c2A1D   52mb 54528424 123.7mb 129761280 42.0% 127.0.0.1 Junkpile
+        XO6c2A1D 46.5mb 48787064 123.7mb 129761280 37.6% 127.0.0.1 Junkpile
+
+This is extremely helpful during indexing, for example.  If you see a
+single node showing up a lot, you might have hot shard(s) there.  If
+you see all the nodes regularly showing up with varying heap usage
+percentage, it's likely a healthy cluster with good shard
+distribution.
+
+Searching has slightly different characteristics, but you can make
+similarly helpful inferences.
 
 
 ## Shards
