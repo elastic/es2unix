@@ -1,6 +1,7 @@
 (ns es.data.cluster
   (:refer-clojure :exclude [count])
   (:require [es.data.replica :as replica]
+            [es.data.nodes :as nodes]
             [es.format.uri :as uri]
             [es.util :as util]))
 
@@ -43,3 +44,27 @@
      (count http "*:*"))
   ([http query]
      (http (str "/_count?q=" (uri/encode query)))))
+
+(defn flaggable-nodes [http path flags]
+  (let [path (str path "?" (uri/query-flags flags))]
+    (http path)))
+
+(defn stats [http & flags]
+  (flaggable-nodes http "/_nodes/stats" flags))
+
+(defn info [http & flags]
+  (flaggable-nodes http "/_nodes" flags))
+
+(defn nodes [http & flags]
+  (util/merge-transpose
+   {:stats (:nodes (apply stats http flags))}
+   {:info (:nodes (apply info http flags))}))
+
+(defn mem [http]
+  (->> (for [[id node] (nodes http :jvm)]
+         (let [stat (get-in node [:stats :jvm :mem])
+               info (get-in node [:info :jvm :mem])]
+           [id (merge
+                (nodes/mem stat info)
+                (select-keys (:info node) [:name :transport_address]))]))
+       (into {})))

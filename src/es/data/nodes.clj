@@ -1,7 +1,7 @@
 (ns es.data.nodes
   (:refer-clojure :exclude [false? true? name])
   (:require [es.http :as http]
-            [es.data.cluster :as cluster]))
+            [es.util.math :as math]))
 
 (def defaults
   {:client false
@@ -49,3 +49,13 @@
   (let [nodes (nodes http)
         id (keyword id)]
     (nodes id)))
+
+(defn mem [mem-stat mem-info]
+  (let [used (:heap_used_in_bytes mem-stat)
+        max (:heap_max_in_bytes mem-info)]
+    (merge
+     mem-stat
+     mem-info
+     {:heap_used_percent (math/percent used max)})))
+
+
