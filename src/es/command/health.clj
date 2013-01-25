@@ -1,5 +1,6 @@
 (ns es.command.health
-  (:require [es.data.cluster :as cluster]))
+  (:require [es.data.cluster :as cluster]
+            [es.util.time :as time]))
 
 (def cols
   [['cluster  :cluster_name]
@@ -15,7 +16,7 @@
 (defn health [http args {:keys [verbose]}]
   (concat
    (if verbose
-     [(map (comp name first) cols)])
+     [(cons "time" (map (comp name first) cols))])
    (let [res (cluster/health http)
-         vals (apply juxt (map second cols))]
-     [(vals res)])))
+         vals* (apply juxt (map second cols))]
+     [(cons (time/hm) (vals* res))])))
