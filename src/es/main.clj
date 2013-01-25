@@ -60,7 +60,7 @@
             _ (when (or (= cmd "help")
                         (not cmd))
                 (help banner)
-                (die ""))
+                (System/exit 0))
             res (main cmd args opts)]
         (condp = res
           :fail (if cmd
