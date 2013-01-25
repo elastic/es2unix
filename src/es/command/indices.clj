@@ -17,14 +17,12 @@
    (if verbose
      [(map str cols)])
    (for [[nam data] (idx/indices http args)]
-     (let [pri (- (-> data :health :number_of_shards)
-                  (-> data :health :number_of_replicas))]
-       [(maybe-get-in data :health :status)
-        (name nam)
-        pri
-        (maybe-get-in data :health :number_of_replicas)
-        (table/make-cell
-         {:val (maybe-get-in data :stats :total :store :size)
-          :just :->})
-        (maybe-get-in data :stats :total :store :size_in_bytes)
-        (maybe-get-in data :stats :total :docs :count)]))))
+     [(maybe-get-in data :health :status)
+      (name nam)
+      (-> data :health :active_primary_shards)
+      (maybe-get-in data :health :number_of_replicas)
+      (table/make-cell
+       {:val (maybe-get-in data :stats :total :store :size)
+        :just :->})
+      (maybe-get-in data :stats :total :store :size_in_bytes)
+      (maybe-get-in data :stats :total :docs :count)])))
