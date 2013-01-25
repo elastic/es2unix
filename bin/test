@@ -5,6 +5,7 @@ if curl -s localhost:9200 >/dev/null; then
     echo '===' $cmd
     es -v $cmd
   done
+  es
 else
   echo no ES running for sanity check
 fi
