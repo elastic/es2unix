@@ -30,7 +30,11 @@
                (prn replica))}))))
 
 (defn make-key [routing]
-  [(:index routing)
-   (:shard routing)
-   (:primary routing)
-   (:node routing)])
+  (let [kw (fn [x]
+             (cond
+               (keyword? x) x
+               (string? x) (keyword x)
+               (number? x) (keyword (str x))
+               :else x))
+        gets (juxt :index :shard :primary :node)]
+    (->> routing gets (map kw) vec)))

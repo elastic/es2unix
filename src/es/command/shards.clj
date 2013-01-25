@@ -11,6 +11,9 @@
    'shard
    'pri/rep
    'state
+   'docs
+   'size
+   'bytes
    'ip
    'node])
 
@@ -22,14 +25,27 @@
             (get-in sh [:relocating_node :name]))
     (get-in sh [:node :name])))
 
-(defn run [state indices]
+(defn run [state stats indices]
   (for [sh (cluster/shards state indices)]
-    [(sh :index)
-     (sh :shard)
-     (if (replica/primary? sh) "p" "r")
-     (sh :state)
-     (ip (get-in sh [:node :transport_address]))
-     (name-maybe-relocating sh)]))
+    (let [routing (merge sh {:node (get-in sh [:node :id])})
+          k (replica/make-key routing)
+          shstat (stats k)]
+      [(sh :index)
+       (sh :shard)
+       (if (replica/primary? sh) "p" "r")
+       (sh :state)
+       (get-in shstat [:docs :count])
+       (get-in shstat [:store :size])
+       (get-in shstat [:store :size_in_bytes])
+       (ip (get-in sh [:node :transport_address]))
+       (name-maybe-relocating sh)])))
 
 (defn shards [http args {:keys [verbose]}]
-  (run (http "/_cluster/state?filter_metadata=1") args))
+  (concat
+   (if verbose
+     [cols])
+   (run (cluster/get-state http)
+        (-> http
+            cluster/get-shard-stats
+            cluster/shard-stats)
+        args)))

@@ -16,25 +16,47 @@
             (filter identity)
             (into {})))))
 
-(defn state [http]
+(defn get-state [http]
   (http "/_cluster/state?filter_metadata=1"))
+
+(defn get-shard-stats [http]
+  (http "/_stats?level=shards&all=1"))
+
+(defn shard-stats
+  ([stats]
+     (shard-stats stats []))
+  ([stats indices]
+     (->>
+      (for [[idxname index] (get-in stats [:_all :indices])
+            [shardid shards] (get index :shards)
+            replica shards]
+        (let [routing {:index idxname
+                       :shard shardid
+                       :primary (get-in replica [:routing :primary])
+                       :node (get-in replica [:routing :node])}]
+          (if (replica/maybe routing indices)
+            [(replica/make-key routing) replica])))
+      (filter identity)
+      (into {}))))
 
 (defn shards
   ([state]
-     (shards state []))
+     (shards state {} []))
   ([state indices]
      (let [nodes (:nodes state)]
        ( ->>
          (for [[idxname index] (get-in state [:routing_table :indices])
-               [shname shard] (get index :shards)
+               [_ shard] (get index :shards)
                replica shard]
            (if-let [rep (replica/maybe replica indices)]
-             (-> rep
-                 (assoc-in [:key] (replica/make-key rep))
-                 (update-in [:node]
-                            #(nodes (keyword %)))
-                 (update-in [:relocating_node]
-                            #(nodes (keyword %))))))
+             (let [node-id (:node rep)]
+               (-> rep
+                   (assoc-in [:key] (replica/make-key rep))
+                   (update-in [:node]
+                              #(nodes (keyword %)))
+                   (assoc-in [:node :id] node-id)
+                   (update-in [:relocating_node]
+                              #(nodes (keyword %)))))))
          (filter identity)))))
 
 (defn count
