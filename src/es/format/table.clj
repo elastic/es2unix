@@ -6,6 +6,9 @@
 
 (defrecord Table [widths rows])
 
+(def default-cell-value
+  "-")
+
 (defn cell? [x]
   (= Cell (type x)))
 
@@ -22,10 +25,10 @@
                 (:width x (count* (:val x)))
                 (count* x))]
     (if (map? x)
-      (Cell. (:val x)
+      (Cell. (:val x default-cell-value)
              (:just x (justify (:val x)))
              width)
-      (Cell. x (justify x) width))))
+      (Cell. (or x default-cell-value) (justify x) width))))
 
 (defn make-row [r]
   (let [cells (map make-cell r)
