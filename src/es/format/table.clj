@@ -61,7 +61,15 @@
   (let [table (make-table data)
         fmt (apply str (fmt sep table))
         values (for [row (:rows table)]
-                 (map :val (:cells row)))]
+                 (map :val (:cells row)))
+        _ (when (not (= (count (first values))
+                        (count (.split fmt " "))))
+            (throw (Exception. (with-out-str
+                                 (println "fmt string")
+                                 (prn fmt)
+                                 (println "and values seqs")
+                                 (prn values)
+                                 (println "are different lengths")))))]
     (map (partial apply format fmt) values)))
 
 (defn dispatch [{:keys [output] :as opts} data]
