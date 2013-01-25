@@ -24,17 +24,18 @@
      (shards state []))
   ([state indices]
      (let [nodes (:nodes state)]
-       (filter identity
-               (for [[idxname index] (get-in state [:routing_table :indices])
-                     [shname shard] (get index :shards)
-                     replica shard]
-                 (if-let [rep (replica/maybe replica indices)]
-                   (-> rep
-                       (assoc-in [:key] (replica/make-key rep))
-                       (update-in [:node]
-                                  #(nodes (keyword %)))
-                       (update-in [:relocating_node]
-                                  #(nodes (keyword %))))))))))
+       ( ->>
+         (for [[idxname index] (get-in state [:routing_table :indices])
+               [shname shard] (get index :shards)
+               replica shard]
+           (if-let [rep (replica/maybe replica indices)]
+             (-> rep
+                 (assoc-in [:key] (replica/make-key rep))
+                 (update-in [:node]
+                            #(nodes (keyword %)))
+                 (update-in [:relocating_node]
+                            #(nodes (keyword %))))))
+         (filter identity)))))
 
 (defn count
   ([http]
