@@ -57,7 +57,8 @@
   (let [[opts args banner] (apply cli args opts)]
     (try+
       (let [[cmd & args] args
-            _ (when (= cmd "help")
+            _ (when (or (= cmd "help")
+                        (not cmd))
                 (help banner)
                 (die ""))
             res (main cmd args opts)]
