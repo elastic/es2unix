@@ -9,7 +9,7 @@ if [[ -z $rel && -z $new ]]; then
 fi
 
 echo $rel >etc/version.txt
-make package
+make install
 bin/test || exit 1
 
 git commit -a -m "v${rel}"
