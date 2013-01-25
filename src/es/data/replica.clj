@@ -15,7 +15,8 @@
                           (prn rep)
                           (print " didn't have any routing when matching ")
                           (prn indices))}))]
-       (util/match-any? rep indices))))
+       (if (util/match-any? s indices)
+         rep))))
 
 (defn primary? [replica]
   (if (contains? replica :primary)

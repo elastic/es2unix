@@ -11,39 +11,25 @@
    'shard
    'pri/rep
    'state
-   'size
-   'bytes
-   'docs
    'ip
    'node])
 
+(defn name-maybe-relocating [sh]
+  (if (:relocating_node sh)
+    (format "%s -> %s %s"
+            (get-in sh [:node :name])
+            (ip (get-in sh [:relocating_node :transport_address]))
+            (get-in sh [:relocating_node :name]))
+    (get-in sh [:node :name])))
+
+(defn run [state indices]
+  (for [sh (cluster/shards state indices)]
+    [(sh :index)
+     (sh :shard)
+     (if (replica/primary? sh) "p" "r")
+     (sh :state)
+     (ip (get-in sh [:node :transport_address]))
+     (name-maybe-relocating sh)]))
+
 (defn shards [http args {:keys [verbose]}]
-  (concat
-   (if verbose
-     [(map str cols)])
-   (for [[k sh] (indices/shards http args)]
-     (let [node (nodes/node http (-> sh :routing :node))]
-       [(-> sh :routing :index)
-        (-> sh :routing :shard)
-        (if (replica/primary? sh) "p" "r")
-        (:state sh)
-        (make-cell
-         {:val (-> sh :index :size)
-          :just :->})
-        (-> sh :index :size_in_bytes)
-        (or (-> sh :docs :num_docs) "-")
-        (ip (:transport_address node))
-        (:name node)]))
-   (for [sh (cluster/unassigned-shards http args)]
-     [(:index sh)
-      (:shard sh)
-      (if (replica/primary? sh) "p" "r")
-      (:state sh)
-      (make-cell
-       {:val " "
-        :just :->})
-      " "
-      " "
-      " "
-      " "
-      ])))
+  (run (http "/_cluster/state?filter_metadata=1") args))
