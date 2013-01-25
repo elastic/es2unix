@@ -30,6 +30,7 @@
                      replica shard]
                  (if-let [rep (replica/maybe replica indices)]
                    (-> rep
+                       (assoc-in [:key] (replica/make-key rep))
                        (update-in [:node]
                                   #(nodes (keyword %)))
                        (update-in [:relocating_node]

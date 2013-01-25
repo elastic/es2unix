@@ -28,3 +28,9 @@
         :msg (with-out-str
                (println "replica doesn't have routing info")
                (prn replica))}))))
+
+(defn make-key [routing]
+  [(:index routing)
+   (:shard routing)
+   (:primary routing)
+   (:node routing)])
