@@ -14,6 +14,6 @@ bin/test || exit 1
 
 git commit -a -m "v${rel}"
 git tag -f -am v${rel} v${rel}
-make deploy S3CREDS=~/.s3cfg-esdownload
+make deploy S3CREDS=~/.s3cfg.es.download
 echo $new >etc/version.txt
 git commit -a -m "v${new}"
