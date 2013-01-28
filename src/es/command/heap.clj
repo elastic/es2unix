@@ -24,5 +24,5 @@
       {:val (:heap_max node) :just :->}
       (:heap_max_in_bytes node)
       {:val (:heap_used_percent node) :just :->}
-      {:val (-> node :transport_address ip) :just :->}
+      (-> node :transport_address ip)
       (-> node :name)])))
