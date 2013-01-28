@@ -157,6 +157,9 @@ similarly helpful inferences.
 
 ### Node startup
 
+We've started up three nodes where we had two before. ES decided to
+move one shard to the third node.
+
         % es shards
         wiki 0 p STARTED    1160290 7.2gb 7776371641 127.0.0.1 Feline
         wiki 0 r STARTED    1160290 7.2gb 7776371602 127.0.0.1 Jenkins, Abner
@@ -164,6 +167,9 @@ similarly helpful inferences.
         wiki 1 r STARTED    1159509 7.5gb 8116295811 127.0.0.1 Jenkins, Abner
 
 ### After turning on more replicas
+
+We set `index.number_of_replicas` to `2`, so ES is creating another
+copy of each primary shard.
 
         % es shards
         wiki     0 p STARTED      1160290   7.2gb 7776371641 127.0.0.1 Feline        
@@ -175,6 +181,9 @@ similarly helpful inferences.
 
 ### Single node filter by index, sort reverse by bytes
 
+You can limit the results to a substring match of an index.  This
+filters that output's sixth column through a descending sort.
+ 
         % es shards wik | sort -rnk6
         wiki 1 r STARTED 2.7gb 2980767835 276016 127.0.0.1 Namora
         wiki 0 r STARTED 2.7gb 2953985585 276441 127.0.0.1 Namora
@@ -183,25 +192,16 @@ similarly helpful inferences.
 
 ### Normal three-node cluster operation
 
+Add column names.
+
         % es shards -v
-        index  shard pri/rep state   size    size-bytes  docs ip        node
-        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Cannonball I
-        wiki       0 p       STARTED 404.8mb  424543961 28826 127.0.0.1 Cannonball I
-        wiki       2 p       STARTED 406.9mb  426734771 28718 127.0.0.1 Cannonball I
-        _river     0 p       STARTED 79b             79     0 127.0.0.1 Cannonball I
-        wiki       3 p       STARTED 409.1mb  429013649 28761 127.0.0.1 Cannonball I
-        wiki       4 p       STARTED 410.6mb  430608757 28819 127.0.0.1 Cannonball I
-        wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Slade, Frederick
-        wiki       2 r       STARTED 406.9mb  426738791 28718 127.0.0.1 Slade, Frederick
-        wiki       3 r       STARTED 409.1mb  429017254 28761 127.0.0.1 Slade, Frederick
-        _river     0 r       STARTED 79b             79     0 127.0.0.1 Slade, Frederick
-        wiki       4 r       STARTED 410.6mb  430611290 28819 127.0.0.1 Slade, Frederick
-        wiki       0 r       STARTED 404.8mb  424543961 28826 127.0.0.1 Living Tribunal
-        wiki       1 p       STARTED 404.2mb  423851451 28576 127.0.0.1 Slade, Frederick
-        wiki       1 r       STARTED 404.2mb  423845459 28576 127.0.0.1 Living Tribunal
-        wiki       2 r       STARTED 406.9mb  426734751 28718 127.0.0.1 Living Tribunal
-        wiki       3 r       STARTED 409.1mb  429013629 28761 127.0.0.1 Living Tribunal
-        wiki       4 r       STARTED 410.6mb  430608737 28819 127.0.0.1 Living Tribunal
+        index shard pri/rep state           docs size       bytes ip        node          
+        wiki      0 p       STARTED      1160290 7.2gb 7776371641 127.0.0.1 Feline        
+        wiki      0 r       INITIALIZING       0 3.1gb 3384641066 127.0.0.1 Amphibius     
+        wiki      0 r       STARTED      1160290 7.2gb 7776371602 127.0.0.1 Jenkins, Abner
+        wiki      1 r       INITIALIZING       0 3.7gb 4029041251 127.0.0.1 Feline        
+        wiki      1 p       STARTED      1159509 7.5gb 8116295811 127.0.0.1 Amphibius     
+        wiki      1 r       STARTED      1159509 7.5gb 8116295811 127.0.0.1 Jenkins, Abner
 
 # Contributing
 
