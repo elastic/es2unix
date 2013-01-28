@@ -18,6 +18,10 @@ Earlier versions aren't supported.
         curl -s download.elasticsearch.org/es2unix/es >~/bin/es
         chmod +x ~/bin/es
 
+You can also pin to a particular version from your provisioning tools.
+
+        curl -s download.elasticsearch.org/es2unix/es-1.6.0 >~/bin/es
+
 # Usage
 
 The `es` command takes subcommands and a few options.  It assumes it's
