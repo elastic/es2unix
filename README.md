@@ -163,6 +163,16 @@ similarly helpful inferences.
         wiki 1 p RELOCATING 1159509 7.5gb 8116295811 127.0.0.1 Feline -> 127.0.0.1 Amphibius
         wiki 1 r STARTED    1159509 7.5gb 8116295811 127.0.0.1 Jenkins, Abner
 
+### After turning on more replicas
+
+        % es shards
+        wiki     0 p STARTED      1160290   7.2gb 7776371641 127.0.0.1 Feline        
+        wiki     0 r INITIALIZING       0 100.2mb  105077522 127.0.0.1 Amphibius     
+        wiki     0 r STARTED      1160290   7.2gb 7776371602 127.0.0.1 Jenkins, Abner
+        wiki     1 r INITIALIZING       0 120.3mb  126157581 127.0.0.1 Feline        
+        wiki     1 p STARTED      1159509   7.5gb 8116295811 127.0.0.1 Amphibius     
+        wiki     1 r STARTED      1159509   7.5gb 8116295811 127.0.0.1 Jenkins, Abner
+
 ### Single node filter by index, sort reverse by bytes
 
         % es shards wik | sort -rnk6
