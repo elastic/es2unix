@@ -35,7 +35,7 @@
        (if (replica/primary? sh) "p" "r")
        (sh :state)
        (get-in shstat [:docs :count])
-       (get-in shstat [:store :size])
+       {:val (get-in shstat [:store :size]) :just :->}
        (get-in shstat [:store :size_in_bytes])
        (ip (get-in sh [:node :transport_address]))
        (name-maybe-relocating sh)])))
