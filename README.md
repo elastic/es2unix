@@ -158,9 +158,10 @@ similarly helpful inferences.
 ### Node startup
 
         % es shards
-        wiki   0 p RECOVERING 2.4gb 2634374867 - 127.0.0.1 Bloodshed
-        wiki   1 p RECOVERING 2.4gb 2623087542 - 127.0.0.1 Bloodshed
-        _river 0 p STARTED    439b         439 0 127.0.0.1 Bloodshed
+        wiki 0 p STARTED    1160290 7.2gb 7776371641 127.0.0.1 Feline
+        wiki 0 r STARTED    1160290 7.2gb 7776371602 127.0.0.1 Jenkins, Abner
+        wiki 1 p RELOCATING 1159509 7.5gb 8116295811 127.0.0.1 Feline -> 127.0.0.1 Amphibius
+        wiki 1 r STARTED    1159509 7.5gb 8116295811 127.0.0.1 Jenkins, Abner
 
 ### Single node filter by index, sort reverse by bytes
 
