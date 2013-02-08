@@ -17,6 +17,6 @@ package: clean test
 install: package
 	cp target/$(BIN) ~/bin/$(NAME)
 
-release: package
+release: install test
 	s3cmd -c $(S3CREDS) put -P target/$(BIN) $(S3HOME)/$(BIN)
 	s3cmd -c $(S3CREDS) cp $(S3HOME)/$(BIN) $(S3HOME)/$(NAME)
