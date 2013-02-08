@@ -14,27 +14,27 @@
   [["\\{([^}]+)\\}\\[[^]]+\\]: initializing "
     'INIT
     [:timestamp :me :version]
-    [:timestamp :op :me :version]]
+    [:timestamp :me :op :version]]
    ["\\{([^}]+)\\}\\[[^]]+\\]: started"
     'START
     [:timestamp :me :version]
-    [:timestamp :op :me :_]]
+    [:timestamp :me :op :_]]
    ["\\{([^}]+)\\}\\[[^]]+\\]: stopped"
     'STOP
     [:timestamp :me :version]
-    [:timestamp :op :me :_]]
+    [:timestamp :me :op :_]]
    ["(new|detected)_master \\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
     'MASTER
     [:timestamp :me :_ :her-name :her-ip]
-    [:timestamp :op :me :her-name]]
+    [:timestamp :me :op :her-name]]
    ["added \\{\\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
     'ADD
     [:timestamp :me :her-name :her-ip]
-    [:timestamp :op :me :her-name]]
+    [:timestamp :me :op :her-name]]
    ["removed \\{\\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
     'REMOVE
     [:timestamp :me :her-name :her-ip]
-    [:timestamp :op :me :her-name]]])
+    [:timestamp :me :op :her-name]]])
 
 (defn match [pats line]
   (let [f (fn [[pat op ks output]]
