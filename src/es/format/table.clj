@@ -19,13 +19,18 @@
     clojure.lang.BigInt :->
     :<-))
 
+(defn getn [m k not-found]
+  (if-let [v (get m k)]
+    v
+    not-found))
+
 (defn make-cell [x]
   (let [count* #(count (str (or % " ")))
         width (if (map? x)
                 (:width x (count* (:val x)))
                 (count* x))]
     (if (map? x)
-      (Cell. (:val x default-cell-value)
+      (Cell. (getn x :val default-cell-value)
              (:just x (justify (:val x)))
              width)
       (Cell. (or x default-cell-value) (justify x) width))))
