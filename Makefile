@@ -1,4 +1,6 @@
-VERSION = $(shell cat etc/version.txt)
+NAME = es
+VERSION = $(shell git ver)
+BIN = $(NAME)-$(VERSION)
 S3HOME = s3://download.elasticsearch.org/es2unix
 
 clean:
@@ -8,11 +10,13 @@ test:
 	bin/test
 
 package: clean test
+	mkdir -p etc
+	echo -n $(VERSION) >etc/version.txt
 	lein bin
 
 install: package
-	cp target/es ~/bin
+	cp target/$(BIN) ~/bin/$(NAME)
 
-deploy: install
-	s3cmd -c $(S3CREDS) put -P target/es $(S3HOME)/es-$(VERSION)
-	s3cmd -c $(S3CREDS) cp $(S3HOME)/es-$(VERSION) $(S3HOME)/es
+release: package
+	s3cmd -c $(S3CREDS) put -P target/$(BIN) $(S3HOME)/$(BIN)
+	s3cmd -c $(S3CREDS) cp $(S3HOME)/$(BIN) $(S3HOME)/$(NAME)
