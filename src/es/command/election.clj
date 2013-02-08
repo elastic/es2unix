@@ -11,16 +11,38 @@
   "")
 
 (def op-pats
-  [["added \\{\\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[([^]]+)\\]"
-    'ADD [:timestamp :me :her-name :her-ip]]
-   ["removed \\{\\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[([^]]+)\\]"
-    'REMOVE [:timestamp :me :her-name :her-ip]]])
+  [["\\{([^}]+)\\}\\[[^]]+\\]: initializing "
+    'INIT
+    [:timestamp :me :version]
+    [:timestamp :op :me :version]]
+   ["\\{([^}]+)\\}\\[[^]]+\\]: started"
+    'START
+    [:timestamp :me :version]
+    [:timestamp :op :me :version]]
+   ["\\{([^}]+)\\}\\[[^]]+\\]: stopped"
+    'STOP
+    [:timestamp :me :version]
+    [:timestamp :op :me :version]]
+   ["(new|detected)_master \\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
+    'MASTER
+    [:timestamp :me :_ :her-name :her-ip]
+    [:timestamp :op :me :her-name]]
+   ["added \\{\\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
+    'ADD
+    [:timestamp :me :her-name :her-ip]
+    [:timestamp :op :me :her-name]]
+   ["removed \\{\\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
+    'REMOVE
+    [:timestamp :me :her-name :her-ip]
+    [:timestamp :op :me :her-name]]])
 
 (defn match [pats line]
-  (let [f (fn [[pat op ks]]
+  (let [f (fn [[pat op ks output]]
             (if-let [matched (re-find (re-pattern
                                        (str pat-pre pat pat-post)) line)]
-              (merge {:op op} (zipmap ks (rest matched)))))]
+              (merge {:op op
+                      :output output}
+                     (zipmap ks (rest matched)))))]
     (->> pats
          (map f)
          (some identity))))
@@ -33,7 +55,5 @@
 (defn election [_ files opts]
   (->> (for [f files
              op (ops (io/reader f))]
-         (condp = (:op op)
-           'ADD ((juxt :timestamp :op :me :her-name :her-ip) op)
-           'REMOVE ((juxt :timestamp :op :me :her-name :her-ip) op)))
+         ((apply juxt (:output op)) op))
        sort))
