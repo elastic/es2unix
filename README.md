@@ -129,6 +129,28 @@ Who's master-eligible?  Who's got `data=true`?
         j27iagsmQQaeIpl6yU6mCg 127.0.0.1 9203 127.0.0.1 9303 - c Georgianna Castleberry
         T1aFDU2BSUm748gYxjEN9w 127.0.0.1 9202 127.0.0.1 9302   d Living Tribunal
 
+If you have access to logs from all the nodes, you can run `lifecycle`
+to get a playback of all the node joinings and leavings with their
+timestamps ordered sequentially.  This is much faster than combing the
+logs and piecing together the sequence manually.
+
+        % es lifecycle /tmp/es-*/logs/elasticsearch.log
+        2013-02-08 13:47:15,516 Lurking Unknown INIT   0.21.0.Beta1-SNAPSHOT
+        2013-02-08 13:47:20,413 Lurking Unknown MASTER Lurking Unknown
+        2013-02-08 13:47:20,467 Lurking Unknown START
+        2013-02-08 13:47:36,319 Cameron Hodge   INIT   0.21.0.Beta1-SNAPSHOT
+        2013-02-08 13:47:41,211 Lurking Unknown ADD    Cameron Hodge
+        2013-02-08 13:47:41,223 Cameron Hodge   MASTER Lurking Unknown
+        2013-02-08 13:47:41,278 Cameron Hodge   START
+        2013-02-08 13:47:59,426 Armageddon      INIT   0.21.0.Beta1-SNAPSHOT
+        2013-02-08 13:48:04,279 Lurking Unknown ADD    Armageddon
+        2013-02-08 13:48:04,280 Cameron Hodge   ADD    Armageddon
+        2013-02-08 13:48:04,287 Armageddon      MASTER Lurking Unknown
+        2013-02-08 13:48:04,340 Armageddon      START
+        2013-02-08 13:48:30,333 Lurking Unknown REMOVE Armageddon
+        2013-02-08 13:48:30,339 Cameron Hodge   REMOVE Armageddon
+        2013-02-08 13:48:30,362 Armageddon      STOP
+
 ## Heap
 
 Heap across the cluster.
@@ -179,18 +201,18 @@ We set `index.number_of_replicas` to `2`, so ES is creating another
 copy of each primary shard.
 
         % es shards
-        wiki     0 p STARTED      1160290   7.2gb 7776371641 127.0.0.1 Feline        
-        wiki     0 r INITIALIZING       0 100.2mb  105077522 127.0.0.1 Amphibius     
+        wiki     0 p STARTED      1160290   7.2gb 7776371641 127.0.0.1 Feline
+        wiki     0 r INITIALIZING       0 100.2mb  105077522 127.0.0.1 Amphibius
         wiki     0 r STARTED      1160290   7.2gb 7776371602 127.0.0.1 Jenkins, Abner
-        wiki     1 r INITIALIZING       0 120.3mb  126157581 127.0.0.1 Feline        
-        wiki     1 p STARTED      1159509   7.5gb 8116295811 127.0.0.1 Amphibius     
+        wiki     1 r INITIALIZING       0 120.3mb  126157581 127.0.0.1 Feline
+        wiki     1 p STARTED      1159509   7.5gb 8116295811 127.0.0.1 Amphibius
         wiki     1 r STARTED      1159509   7.5gb 8116295811 127.0.0.1 Jenkins, Abner
 
 ### Single node filter by index, sort reverse by bytes
 
 You can limit the results to a substring match of an index.  This
 filters that output's sixth column through a descending sort.
- 
+
         % es shards wik | sort -rnk6
         wiki 1 r STARTED 2.7gb 2980767835 276016 127.0.0.1 Namora
         wiki 0 r STARTED 2.7gb 2953985585 276441 127.0.0.1 Namora
@@ -202,12 +224,12 @@ filters that output's sixth column through a descending sort.
 Add column names.
 
         % es shards -v
-        index shard pri/rep state           docs size       bytes ip        node          
-        wiki      0 p       STARTED      1160290 7.2gb 7776371641 127.0.0.1 Feline        
-        wiki      0 r       INITIALIZING       0 3.1gb 3384641066 127.0.0.1 Amphibius     
+        index shard pri/rep state           docs size       bytes ip        node
+        wiki      0 p       STARTED      1160290 7.2gb 7776371641 127.0.0.1 Feline
+        wiki      0 r       INITIALIZING       0 3.1gb 3384641066 127.0.0.1 Amphibius
         wiki      0 r       STARTED      1160290 7.2gb 7776371602 127.0.0.1 Jenkins, Abner
-        wiki      1 r       INITIALIZING       0 3.7gb 4029041251 127.0.0.1 Feline        
-        wiki      1 p       STARTED      1159509 7.5gb 8116295811 127.0.0.1 Amphibius     
+        wiki      1 r       INITIALIZING       0 3.7gb 4029041251 127.0.0.1 Feline
+        wiki      1 p       STARTED      1159509 7.5gb 8116295811 127.0.0.1 Amphibius
         wiki      1 r       STARTED      1159509 7.5gb 8116295811 127.0.0.1 Jenkins, Abner
 
 # Contributing
