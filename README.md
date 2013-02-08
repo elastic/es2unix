@@ -120,6 +120,9 @@ affected:
 
 ## Nodes
 
+What HTTP port is `Cannonball I` listening on?  Who's the master?
+Who's master-eligible?  Who's got `data=true`?
+
         % es nodes
         Uv1Iy8FvR0y6_RzPXKBolg 127.0.0.1 9201 127.0.0.1 9300   d Cannonball I
         J-erllamTOiW5WoGVUd04A 127.0.0.1 9200 127.0.0.1 9301 * d Slade, Frederick
