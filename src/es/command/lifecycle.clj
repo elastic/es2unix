@@ -3,7 +3,8 @@
 
 (def pat-pre
   (str "^\\[([^]]+)\\]" ;; timestamp
-       "\\[[^]]+\\]\\[[^]]+\\] " ;; log level & package
+       "\\[[^]]+\\]"  ;; log level
+       "\\[(?:node|transport|cluster\\.service)\\s*\\] "  ;; package
        "\\[([^]]+)\\] " ;; node name
        ))
 
@@ -15,6 +16,10 @@
     'INIT
     [:timestamp :me :version]
     [:timestamp :me :op :version]]
+   [".* publish_address \\{inet\\[.*?/([^]]+)\\]\\}"
+    'BIND
+    [:timestamp :me :ip]
+    [:timestamp :me :op :ip]]
    ["\\{([^}]+)\\}\\[[^]]+\\]: started"
     'START
     [:timestamp :me :version]
