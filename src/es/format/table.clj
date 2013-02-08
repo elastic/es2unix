@@ -88,5 +88,6 @@
   "no output format")
 
 (defmethod tabler :raw [opts data]
-  (doseq [l (strings " " data)]
-    (println l)))
+  (when (seq data)
+    (doseq [l (strings " " data)]
+      (println l))))
