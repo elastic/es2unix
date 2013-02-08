@@ -7,7 +7,7 @@
 (defrecord Table [widths rows])
 
 (def default-cell-value
-  "-")
+  " ")
 
 (defn cell? [x]
   (= Cell (type x)))
