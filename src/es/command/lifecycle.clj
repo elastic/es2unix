@@ -18,11 +18,11 @@
    ["\\{([^}]+)\\}\\[[^]]+\\]: started"
     'START
     [:timestamp :me :version]
-    [:timestamp :op :me :version]]
+    [:timestamp :op :me :_]]
    ["\\{([^}]+)\\}\\[[^]]+\\]: stopped"
     'STOP
     [:timestamp :me :version]
-    [:timestamp :op :me :version]]
+    [:timestamp :op :me :_]]
    ["(new|detected)_master \\[([^]]+)\\]\\[[^]]+\\]\\[inet\\[.*?/([^]]+)\\]"
     'MASTER
     [:timestamp :me :_ :her-name :her-ip]
