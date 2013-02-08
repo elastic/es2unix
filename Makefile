@@ -9,14 +9,15 @@ clean:
 test:
 	bin/test
 
-package: clean test
+package: clean
 	mkdir -p etc
 	echo -n $(VERSION) >etc/version.txt
 	lein bin
 
 install: package
 	cp target/$(BIN) ~/bin/$(NAME)
+	bin/test
 
-release: install test
+release: install
 	s3cmd -c $(S3CREDS) put -P target/$(BIN) $(S3HOME)/$(BIN)
 	s3cmd -c $(S3CREDS) cp $(S3HOME)/$(BIN) $(S3HOME)/$(NAME)
