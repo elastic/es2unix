@@ -67,7 +67,7 @@
                   (die "no command %s" cmd))
           (tabler opts res)))
       (catch [:type :es.http/error] {:keys [msg]}
-        (die msg))
+        (die "http error: %s" msg))
       (catch Object _
         (die "unexpected: %s\n%s" &throw-context
              (-> &throw-context :throwable stack-trace))))))
