@@ -1,4 +1,4 @@
-(ns es.command.election
+(ns es.command.lifecycle
   (:require [clojure.java.io :as io]))
 
 (def pat-pre
@@ -52,7 +52,7 @@
        (map #(match op-pats %))
        (filter identity)))
 
-(defn election [_ files opts]
+(defn lifecycle [_ files opts]
   (->> (for [f files
              op (ops (io/reader f))]
          ((apply juxt (:output op)) op))

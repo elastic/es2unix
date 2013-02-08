@@ -1,6 +1,6 @@
 (ns es.command
   (:require [es.command.count]
-            [es.command.election]
+            [es.command.lifecycle]
             [es.command.health]
             [es.command.heap]
             [es.command.indices]
@@ -12,7 +12,7 @@
 
 (def available
   ['count
-   'election
+   'lifecycle
    'health
    'heap
    'indices
