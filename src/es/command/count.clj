@@ -1,6 +1,7 @@
 (ns es.command.count
   (:refer-clojure :exclude [count])
   (:require [es.data.cluster :as cluster]
+            [es.util.time :as time]
             [es.util :as util]))
 
 (defn count [http args {:keys [verbose]}]
@@ -14,4 +15,4 @@
         out (if (pos? failed)
               (format "%s ...with %d failed shards!" out failed)
               out)]
-    [[out]]))
+    [(cons (time/hms) [out])]))
