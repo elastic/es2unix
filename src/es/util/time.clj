@@ -4,8 +4,8 @@
 (defn now []
   (java.util.Date.))
 
-(defn hm
+(defn hms
   ([]
-     (hm (now)))
+     (hms (now)))
   ([date]
       (.format (SimpleDateFormat. "HH:mm:ss") date)))
