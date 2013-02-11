@@ -19,4 +19,4 @@
      [(cons "time" (map (comp name first) cols))])
    (let [res (cluster/health http)
          vals* (apply juxt (map second cols))]
-     [(cons (time/hm) (vals* res))])))
+     [(cons (time/hms) (vals* res))])))
