@@ -8,7 +8,8 @@
             [es.command.nodes]
             [es.command.shards]
             [es.command.search]
-            [es.command.version]))
+            [es.command.version]
+            [es.command.allocation]))
 
 (def available
   ['count
@@ -20,4 +21,5 @@
    'nodes
    'search
    'shards
-   'version])
+   'version
+   'allocation])
