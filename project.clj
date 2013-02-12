@@ -1,5 +1,6 @@
 (defproject org.elasticsearch/es
-  (-> "etc/version.txt" slurp .trim)
+  (try (-> "etc/version.txt" slurp .trim)
+       (catch java.io.FileNotFoundException _ "0.0.1"))
   :description "es2unix"
   :resource-paths ["etc" "resources"]
   :url "http://elasticsearch.org/"
