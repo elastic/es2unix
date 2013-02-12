@@ -59,6 +59,12 @@
                               #(nodes (keyword %)))))))
          (filter identity)))))
 
+(defn routing
+  [http]
+  (let [st (get-state http)]
+    (for [index (-> st :routing_table :indices)]
+      index)))
+
 (defn count
   ([http]
      (count http "*:*"))
