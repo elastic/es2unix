@@ -16,4 +16,7 @@
                  [com.google.guava/guava "14.0-rc1"]]
   :plugins [[lein-bin "0.3.0"]]
   :main es.main
-  :uberjar-name "es.jar")
+  :uberjar-name "es.jar"
+  :jvm-opts ["-XX:TieredStopAtLevel=1"
+             "-XX:+TieredCompilation"]
+  :bin {:bootclasspath :yes!})
