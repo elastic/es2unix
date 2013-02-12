@@ -117,6 +117,13 @@ affected:
         red    enron        5 0
         red    uno          1 0
 
+## Allocation
+Displays shard allocation counts across nodes
+
+        % es allocation -v
+        count ip           name
+           12 192.168.0.24 Sage
+           30 x.x.x.x      UNASSIGNED
 
 ## Nodes
 
