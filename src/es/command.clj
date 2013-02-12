@@ -1,5 +1,6 @@
 (ns es.command
-  (:require [es.command.count]
+  (:require [es.command.allocation]
+            [es.command.count]
             [es.command.lifecycle]
             [es.command.health]
             [es.command.heap]
@@ -8,11 +9,11 @@
             [es.command.nodes]
             [es.command.shards]
             [es.command.search]
-            [es.command.version]
-            [es.command.allocation]))
+            [es.command.version]))
 
 (def available
-  ['count
+  ['allocation
+   'count
    'lifecycle
    'health
    'heap
@@ -21,5 +22,4 @@
    'nodes
    'search
    'shards
-   'version
-   'allocation])
+   'version])
