@@ -2,7 +2,7 @@
   (:require [es.data.cluster :as data]
             [es.data.nodes :as nodes]
             [es.format.network :refer [parse-addr]]
-            [clojure.set :refer [map-invert rename-keys]]))
+            [clojure.set :refer [rename-keys]]))
 
 (def cols
   ['count
