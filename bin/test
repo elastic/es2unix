@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if curl -s localhost:9200 >/dev/null; then
-  for cmd in `~/bin/es help 2>&1 | /usr/bin/egrep '^  [a-z]'`; do
+  for cmd in `~/bin/es help 2>&1 | egrep '^  [a-z]'`; do
     echo '===' $cmd
     ~/bin/es -v $cmd
   done
