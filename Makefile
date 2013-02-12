@@ -11,7 +11,7 @@ test:
 
 package: clean
 	mkdir -p etc
-	echo -n $(VERSION) >etc/version.txt
+	echo "$(VERSION)" >etc/version.txt
 	lein bin
 
 install: package
