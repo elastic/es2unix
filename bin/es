@@ -2,5 +2,6 @@
 
 exec java -client \
    -XX:+TieredCompilation \
+   -XX:TieredStopAtLevel=1 \
    -Xbootclasspath/a:target/es.jar \
    es.main "$@"
