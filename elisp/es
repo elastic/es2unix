@@ -1,0 +1,10 @@
+:;exec emacs --batch --no-site-file -l $0 -f main $* # -*- Emacs-Lisp -*-
+
+(require 'vc)
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
+
+(defun main ()
+  (let ((buf (url-retrieve-synchronously
+              "http://localhost:9200")))
+    (set-buffer buf)
+    (message (buffer-string))))
