@@ -4,6 +4,7 @@
             [es.command.lifecycle]
             [es.command.health]
             [es.command.heap]
+            [es.command.ids]
             [es.command.indices]
             [es.command.master]
             [es.command.nodes]
@@ -17,6 +18,7 @@
    'lifecycle
    'health
    'heap
+   'ids
    'indices
    'master
    'nodes
