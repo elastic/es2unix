@@ -2,6 +2,7 @@
   (:refer-clojure :exclude [count])
   (:require [es.data.replica :as replica]
             [es.data.nodes :as nodes]
+            [es.data.search :as search]
             [es.format.uri :as uri]
             [es.util :as util]))
 
@@ -15,6 +16,19 @@
                 [nam data]))
             (filter identity)
             (into {})))))
+
+(defn index-status
+  [http index]
+  (http (str index "/_status")))
+
+(defn shard-status
+  [http]
+  (for [idx (keys (:indices (http "/_cluster/health?level=indices")))]
+    (let [index (name idx)
+          indexshards (->> (index-status http index)
+                           :indices
+                           (mapcat (fn [[idx status]] [idx (:shards status)])))]
+      indexshards)))
 
 (defn get-state [http]
   (http "/_cluster/state?filter_metadata=1"))
