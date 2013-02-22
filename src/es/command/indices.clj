@@ -25,4 +25,4 @@
        {:val (maybe-get-in data :stats :total :store :size)
         :just :->})
       (maybe-get-in data :stats :total :store :size_in_bytes)
-      (maybe-get-in data :stats :total :docs :count)])))
+      (maybe-get-in data :stats :primaries :docs :count)])))
