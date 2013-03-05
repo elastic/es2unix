@@ -20,7 +20,7 @@ Earlier versions aren't supported.
 
 You can also pin to a particular version from your provisioning tools.
 
-        curl -s download.elasticsearch.org/es2unix/es-20130212+936a9a1 >~/bin/es
+        curl -s download.elasticsearch.org/es2unix/es-20130305dce699b >~/bin/es
 
 # Usage
 
