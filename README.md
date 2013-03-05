@@ -189,6 +189,19 @@ Searching has slightly different characteristics, but you can make
 similarly helpful inferences.
 
 
+## Ids
+
+Sometimes it's helpful to retrieve the ids of all documents in an ES
+index.
+
+        % es ids test -v
+        index type id
+        test doc 1
+        test doc 2
+        test doc 3
+        test doc 4
+
+
 ## Shards
 
 ### Node startup
