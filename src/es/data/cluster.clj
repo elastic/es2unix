@@ -2,7 +2,6 @@
   (:refer-clojure :exclude [count])
   (:require [es.data.replica :as replica]
             [es.data.nodes :as nodes]
-            [es.data.search :as search]
             [es.format.uri :as uri]
             [es.util :as util]))
 
