@@ -17,19 +17,6 @@
             (filter identity)
             (into {})))))
 
-(defn index-status
-  [http index]
-  (http (str index "/_status")))
-
-(defn shard-status
-  [http]
-  (for [idx (keys (:indices (http "/_cluster/health?level=indices")))]
-    (let [index (name idx)
-          indexshards (->> (index-status http index)
-                           :indices
-                           (mapcat (fn [[idx status]] [idx (:shards status)])))]
-      indexshards)))
-
 (defn get-state [http]
   (http "/_cluster/state?filter_metadata=1"))
 
