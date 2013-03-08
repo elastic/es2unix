@@ -1,6 +1,5 @@
 (ns es.command.recovery
-  (:require [es.data.cluster :as cluster]
-            [clojure.pprint :refer [pprint]]))
+  (:require [es.data.cluster :as cluster]))
 
 (def cols
   ['shard
