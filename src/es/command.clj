@@ -8,6 +8,7 @@
             [es.command.indices]
             [es.command.master]
             [es.command.nodes]
+            [es.command.recovery]
             [es.command.shards]
             [es.command.search]
             [es.command.version]))
@@ -22,6 +23,7 @@
    'indices
    'master
    'nodes
+   'recovery
    'search
    'shards
    'version])

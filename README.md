@@ -201,6 +201,16 @@ index.
         test doc 3
         test doc 4
 
+## Recovery
+
+If you want to see how much of a shard has been recovered while the
+cluster is yellow.
+
+        % es recovery -v
+        shard           replica-bytes primary-bytes percent
+        myindex[0]       58464319354  194544015009 30.1%
+        myotherindex[0]  43886936928  110395560260 39.8%
+        twitter[0]      115757113295  115757116576 100.0%
 
 ## Shards
 
