@@ -1,36 +1,9 @@
 #!/usr/bin/env runhaskell
 
-{-# LANGUAGE OverloadedStrings #-}
-
 import Data.Aeson
-import Control.Monad
-import Control.Applicative
 import qualified Data.ByteString.Lazy.Char8 as BS
 import Network.HTTP (simpleHTTP, getRequest, getResponseBody)
-
-data Health = Health { getClusterName :: String
-                     , getStatus :: String
-                     , getNumberOfNodes :: Integer
-                     , getNumberOfDataNodes :: Integer
-                     , getActivePrimaryShards :: Integer
-                     , getActiveShards :: Integer
-                     , getRelocatingShards :: Integer
-                     , getInitializingShards :: Integer
-                     , getUnassignedShards :: Integer
-                     } deriving (Show)
-
-instance FromJSON Health where
-  parseJSON (Object v) = Health <$>
-                         (v .: "cluster_name") <*>
-                         (v .: "status") <*>
-                         (v .: "number_of_nodes") <*>
-                         (v .: "number_of_data_nodes") <*>
-                         (v .: "active_primary_shards") <*>
-                         (v .: "active_shards") <*>
-                         (v .: "relocating_shards") <*>
-                         (v .: "initializing_shards") <*>
-                         (v .: "unassigned_shards")
-  parseJSON _ = mzero
+import Es2Unix.Health
 
 main :: IO ()
 main = do
