@@ -20,7 +20,7 @@
   ([http indices]
      (util/merge-transpose
       {:health (cluster/health http indices)}
-      {:stats (get-in (stats http indices) [:_all :indices])})))
+      {:stats (get-in (stats http indices) [:indices])})))
 
 
 

@@ -27,7 +27,7 @@
      (shard-stats stats []))
   ([stats indices]
      (->>
-      (for [[idxname index] (get-in stats [:_all :indices])
+      (for [[idxname index] (get-in stats [:indices])
             [shardid shards] (get index :shards)
             replica shards]
         (let [routing {:index idxname
