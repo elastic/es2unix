@@ -6,7 +6,7 @@ S3HOME = s3://download.elasticsearch.org/es2unix
 
 package: target/$(BIN)
 
-test: target/$(BIN)
+test: install
 	bin/test
 
 install: target/$(BIN)
