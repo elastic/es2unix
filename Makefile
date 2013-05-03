@@ -1,23 +1,26 @@
+LEIN ?= lein
 NAME = es
 VERSION = $(shell git ver)
 BIN = $(NAME)-$(VERSION)
 S3HOME = s3://download.elasticsearch.org/es2unix
 
-clean:
-	lein clean
+package: target/$(BIN)
 
-test:
+test: target/$(BIN)
 	bin/test
 
-package: clean
+install: target/$(BIN)
+	cp target/$(BIN) ~/bin/$(NAME)
+
+release: target/$(BIN)
+	s3c es.download put -P target/$(BIN) $(S3HOME)/$(BIN)
+	s3c es.download cp $(S3HOME)/$(BIN) $(S3HOME)/$(NAME)
+
+clean:
+	$(LEIN) clean
+
+target/$(BIN):
 	mkdir -p etc
 	echo $(VERSION) >etc/version.txt
-	lein bin
+	LEIN_SNAPSHOTS_IN_RELEASE=yes $(LEIN) bin
 
-install: package
-	cp target/$(BIN) ~/bin/$(NAME)
-	bin/test
-
-release: install
-	s3cmd -c $(S3CREDS) put -P target/$(BIN) $(S3HOME)/$(BIN)
-	s3cmd -c $(S3CREDS) cp $(S3HOME)/$(BIN) $(S3HOME)/$(NAME)
