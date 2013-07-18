@@ -9,7 +9,14 @@
    :master true})
 
 (defn nodes [http]
-  (-> "/_nodes" http :nodes))
+  (-> "/_nodes?all" http :nodes))
+
+(defn stats
+  ([http]
+     (-> "/_nodes/stats?all" http :nodes))
+  ([http id]
+     (-> (format "/_nodes/%s/stats?all"
+                 (clojure.core/name id)) http :nodes id)))
 
 (defn master [http]
   (http
@@ -57,5 +64,3 @@
      mem-stat
      mem-info
      {:heap_used_percent (math/percent used max)})))
-
-
