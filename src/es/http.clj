@@ -67,6 +67,6 @@
     ([]
        (f "/"))
     ([path]
-       (let [path (clojure.string/replace path #"^\/+" "")]
-       (let [url (str (URL. (URL. base) path))]
-         (get url))))))
+       (let [path (clojure.string/replace path #"^\/+" "")
+             url (-> (URL. base) (URL. path) str)]
+         (get url)))))
