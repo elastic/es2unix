@@ -1,5 +1,7 @@
 # es2unix
 
+**Deprecated since elasticsearch 1.0.  Use the [cat API instead](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/cat.html).  Also check out https://github.com/drewr/copycat.**
+
 Elasticsearch API consumable by the command line.
 
 JSON isn't always the most convenient output, particularly on a
