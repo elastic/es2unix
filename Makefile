@@ -1,6 +1,6 @@
 LEIN ?= lein
 NAME = es
-VERSION = $(shell git ver)
+VERSION = $(shell git describe --tags)
 BIN = $(NAME)-$(VERSION)
 S3HOME = s3://download.elasticsearch.org/es2unix
 
