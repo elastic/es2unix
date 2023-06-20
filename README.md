@@ -1,6 +1,6 @@
 # es2unix
 
-**Deprecated since elasticsearch 1.0.  Use the [cat API instead](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/cat.html).  Also check out https://github.com/drewr/copycat.**
+**this Repo is now Read-Only and Deprecated since elasticsearch 1.0.  Use the [cat API instead](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/cat.html).  Also check out https://github.com/drewr/copycat.**
 
 Elasticsearch API consumable by the command line.
 
